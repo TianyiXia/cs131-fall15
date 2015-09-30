@@ -32,8 +32,3 @@ let rec set_intersection a b =
 	| h1::t1, b ->
 	if subset [h1] b then set_union (set_intersection t1 b) [h1] else set_intersection t1 b;;
 
-(* 	if h1 = h2 then (set_intersection t1 t1) @ [h1]
-	else if subset [h1] t2 && subset [h2] t1 then (set_intersection t1 t2) @ [h1] @ [h2]
-	else if subset [h1] t2 then (set_intersection t1 t2) @ [h1] 
-	else if subset [h2] t1 then (set_intersection t1 t2) @ [h2]
-	else set_intersection t1 t2;; *)
