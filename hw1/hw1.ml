@@ -24,4 +24,4 @@ let rec set_union a b =
 	else if not (h1 = h2) then set_union t1 t2
 
 	else if not (subset [h1] t1) && not (subset [h1] t2) then (set_union t1 t2) @ [h1]
-        else set_union t1 t2;;
+	else set_union t1 t2;;
