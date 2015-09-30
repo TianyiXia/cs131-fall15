@@ -13,8 +13,10 @@ let rec equal_sets a b = subset a b && subset b a;;
 let rec set_union a b = 
 	match a, b with
 	| [], [] -> []
-	| h1::t1, [] -> set_union [h1] t1
-	| [], h2::t2 -> set_union [h2] t2
+	| h1::t1, [] -> 
+	if subset [h1] t1 then set_union [] t1 else (set_union []) t1 @ h1
+	| [], h2::t2 ->
+	if subset [h2] t2 then set_union [] t2 else (set_union []) t2 @ h2
 	| h1::t1, h2::t2 -> 
 	if not (subset [h1] t1) && not (subset [h1] t2) && not (subset [h2] t1) && not (subset [h2] t2) then (set_union t1 t2) @ [h1] @ [h2] 
 	else if not (subset [h1] t1) && not (subset [h1] t2) then (set_union t1 t2) @ [h1]
