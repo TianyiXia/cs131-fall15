@@ -1,4 +1,4 @@
-'(* subset: returns true iff a is subset of b *)
+(* subset: returns true iff a is subset of b *)
 let rec subset a b =
 	match a, b with
 	| [], _ -> true
@@ -6,10 +6,10 @@ let rec subset a b =
 	| [a], [b] -> if a = b then true else false
 	| h1::t1, h2::t2 -> if (if h1 = h2 then true else subset [h1] t2) then subset t1 b else false;;
 
-(* equal_sets: returns true iff the represented sets are equal *)
+(* equal_sets: returns true iff the sets are equal *)
 let rec equal_sets a b = subset a b && subset b a;;
 
-(* set_union: returns a list representing the union of two sets *)
+(* set_union: returns a list of the union of two sets *)
 let rec set_union a b = 
 	match a, b with
 	| [], [] -> []
@@ -25,3 +25,11 @@ let rec set_union a b =
 
 	else if not (subset [h1] t1) && not (subset [h1] t2) then (set_union t1 t2) @ [h1]
 	else set_union t1 t2;;
+
+(* set_intersection: returns a list of the intersection of two sets *)
+let rec set_intersection a b =
+	match a, b with
+	| _, [] -> []
+	| [], _ -> []
+	| h1::t1, h2::t2 ->
+	if subset [h1] t2 then (set_intersection t1 t2) @ [h1] else set_intersection t1 t2;; 
