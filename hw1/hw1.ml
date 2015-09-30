@@ -3,8 +3,8 @@ let rec subset a b =
 	match a, b with
 	| [], _ -> true
 	| _, [] -> false
-	| [a], [b] -> if a == b then true else false
-	| h1::t1, h2::t2 -> if (if h1 == h2 then true else subset [h1] t2) then subset t1 b else false;;
+	| [a], [b] -> if a = b then true else false
+	| h1::t1, h2::t2 -> if (if h1 = h2 then true else subset [h1] t2) then subset t1 b else false;;
 
 (* equal_sets: returns true iff the represented sets are equal *)
 let rec equal_sets a b = subset a b && subset b a;;
@@ -18,7 +18,10 @@ let rec set_union a b =
 	| [], h2::t2 ->
 	if subset [h2] t2 then set_union [] t2 else (set_union [] t2) @ [h2]
 	| h1::t1, h2::t2 -> 
-	if not (subset [h1] t1) && not (subset [h1] t2) && not (subset [h2] t1) && not (subset [h2] t2) then (set_union t1 t2) @ [h1] @ [h2] 
+	if not (h1 = h2) && not (subset [h1] t1) && not (subset [h1] t2) && not (subset [h2] t1) && not (subset [h2] t2) then (set_union t1 t2) @ [h1] @ [h2] 
+	else if not (h1 = h2) && not (subset [h1] t1) && not (subset [h1] t2) then (set_union t1 t2) @ [h1]
+	else if not (h1 = h2) not (subset [h2] t1) && not (subset [h2] t2) then (set_union t1 t2) @ [h2]
+	else if not (h1 = h2) then set_union t1 t2
+
 	else if not (subset [h1] t1) && not (subset [h1] t2) then (set_union t1 t2) @ [h1]
-	else if not (subset [h2] t1) && not (subset [h2] t2) then (set_union t1 t2) @ [h2]
-	else set_union t1 t2;;
+	else set_union t1 t2
