@@ -1,4 +1,4 @@
-(* subset: returns true iff a is subset of b *)
+'(* subset: returns true iff a is subset of b *)
 let rec subset a b =
 	match a, b with
 	| [], _ -> true
@@ -20,8 +20,8 @@ let rec set_union a b =
 	| h1::t1, h2::t2 -> 
 	if not (h1 = h2) && not (subset [h1] t1) && not (subset [h1] t2) && not (subset [h2] t1) && not (subset [h2] t2) then (set_union t1 t2) @ [h1] @ [h2] 
 	else if not (h1 = h2) && not (subset [h1] t1) && not (subset [h1] t2) then (set_union t1 t2) @ [h1]
-	else if not (h1 = h2) not (subset [h2] t1) && not (subset [h2] t2) then (set_union t1 t2) @ [h2]
+	else if not (h1 = h2) && not (subset [h2] t1) && not (subset [h2] t2) then (set_union t1 t2) @ [h2]
 	else if not (h1 = h2) then set_union t1 t2
 
 	else if not (subset [h1] t1) && not (subset [h1] t2) then (set_union t1 t2) @ [h1]
-	else set_union t1 t2
+        else set_union t1 t2;;
