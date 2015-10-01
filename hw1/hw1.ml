@@ -38,3 +38,8 @@ let rec set_diff a b =
 	| [], _ -> []
 	| _, [] -> a
 	| h1::t1, b -> if (subset [h1] b) then set_diff t1 b else h1::(set_diff t1 b);;
+
+(* computed_fixed_point: returns computed fixed point for f w/ restect to x) *)
+let rec computed_fixed_point eq f x =
+	if eq (f x) x then x
+	else computed_fixed_point eq f (f x);;
