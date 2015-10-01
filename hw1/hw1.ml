@@ -37,4 +37,4 @@ let rec set_diff a b =
 	match a, b with
 	| [], _ -> []
 	| _, [] -> a
-	| h1::t1, b -> if (subset [h1] b then set_diff t1 b else h1::(set_diff t1 b));;
+	| h1::t1, b -> if (subset [h1] b) then set_diff t1 b else h1::(set_diff t1 b);;
