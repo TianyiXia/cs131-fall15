@@ -32,3 +32,9 @@ let rec set_intersection a b =
 	| h1::t1, b ->
 	if subset [h1] b then set_union (set_intersection t1 b) [h1] else set_intersection t1 b;;
 
+(* set_diff: returns a list of the set of all members in a but not in b *)
+let rec set_diff a b = 
+	match a, b with
+	| [], _ -> []
+	| _, [] -> a
+	| h1::t1, b -> if (subset [h1] b then set_diff t1 b else h1::(set_diff t1 b));;
