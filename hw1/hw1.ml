@@ -43,3 +43,12 @@ let rec set_diff a b =
 let rec computed_fixed_point eq f x =
 	if eq (f x) x then x
 	else computed_fixed_point eq f (f x);;
+
+(* computed_periodic_point: returns computed periodic point for f w/ period p w/ prespect to x assuming that eq is the equality predicate for f's domain *)
+let rec computed_periodic_point eq f p x = 
+	match p with
+	| 0 -> x
+	| _ -> if eq x (f (computed_periodic_point eq f (p-1) (f x))) then x
+	else (computed_periodic_point eq f p (f x));;
+
+
