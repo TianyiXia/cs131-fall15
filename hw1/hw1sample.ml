@@ -36,7 +36,7 @@ let computed_fixed_point_test3 =
 let computed_periodic_point_test0 =
   computed_periodic_point (=) (fun x -> x / 2) 0 (-1) = -1
 let computed_periodic_point_test1 =
-  computed_periodic_point (=) (fun x -> x *. x -. 1.) 2 0.5 = -1.
+  computed_periodic_point (=) (fun x -> x *. x -. 1.) 10 0.5
 
 (* An example grammar for a small subset of Awk, derived from but not
    identical to the grammar in
