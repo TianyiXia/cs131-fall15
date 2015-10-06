@@ -1,168 +1,53 @@
-===============================FUNCTION===============================
-
-Define two functions:
+-------------------------------------------------------------------------------
+* subset a b: Recursively check if all elements of a are also in b.
+-------------------------------------------------------------------------------
+* equal_sets a b: Is true when subset a b && subset b a is are true.
+-------------------------------------------------------------------------------
+* set_union a b: The only reason the function is so verbose is because it
+                 removes all duplicates from the returned results.
+-------------------------------------------------------------------------------
+* set_intersection a b: Recursively check if element exists in both a and b.
+-------------------------------------------------------------------------------
+* set_diff a b: Recursively find elements in a but not in b.
+-------------------------------------------------------------------------------
+* computed_fixed_point eq f x: Recursively check if f(x) == x, if not, call
+                               the function itself again.
+-------------------------------------------------------------------------------
+* computed_periodic_point eq f p x: Recusrively compute the p-th time f(f..(x))
+                                    is computed and check if it is equal to x.
+-------------------------------------------------------------------------------
 
 	* let rec is_symbol_good rules sym
 	* let rec is_rhs_good rules rhs
-
-We define two helper functions that deterimine if the rhs has symbols that
-match those in the list of rules on the left
-
-------------------------------EXAMPLE------------------------------
-
-Suppose we have:
-
-	type awksub_nonterminals = | Expr | Lvalue | Incrop | Binop | Num;;
-
-And we define:
-
-	let l = [Num; Expr; Binop];;
-	let s1 = [N Num, N Expr];;
-	let s2 = [N Num; N Lvalue];;
-	let s3 = [T "3"; N Num];;
-
-Then we would have:
-
-	is_rhs_good l s1 == true;;
-	is_rhs_good l s2 == false;;
-	is_rhs_good l s3 == true;;
-
-----------------------------EXAMPLE END----------------------------
 
 These two helper functions check the right-hand-side of a rule to see if
 all the symbols exist in the list of rules, if not then it is a blind alley
 rule. If it does, we return true for further processing. If it is a terminal
 symbol then it is a good rhs element.
-
-=============================FUNCTION END=============================
-
-
-===============================FUNCTION===============================
-
-Define function:
+-------------------------------------------------------------------------------
 
 	* let rec get_terminal_symbols symbols rules
 
-This function takes a list of rules with a rule in the format of 
-	
-	<Symbol>, [<Symbol Value>; <Symbol Value>]
-
-and returns a list of all valid terminal symbols
-
-------------------------------EXAMPLE------------------------------
-
-Suppose we have:
-
-	type awksub_nonterminals = | Expr | Lvalue | Incrop | Binop | Num;;
-
-	let awksub_rules =
-		[
-			Expr, [T"("; N Expr; T")"];
-			Expr, [N Num];
-			Expr, [N Expr; N Binop; N Expr];
-			Expr, [N Lvalue];
-			Expr, [N Incrop; N Lvalue];
-			Expr, [N Lvalue; N Incrop];
-			Lvalue, [T"$"; N Expr];
-			Incrop, [T"++"];
-			Incrop, [T"--"];
-			Binop, [T"+"];
-			Binop, [T"-"];
-			Num, [T"0"];
-			Num, [T"1"];
-			Num, [T"2"];
-			Num, [T"3"];
-			Num, [T"4"];
-			Num, [T"5"];
-			Num, [T"6"];
-			Num, [T"7"];
-			Num, [T"8"];
-			Num, [T"9"]
-		];;
-
-Then we will get:
-
-	get_terminal_symbols [] awksub_rules == [Num; Binop; Incrop];;
-
-----------------------------EXAMPLE END----------------------------
-
 This function extracts a rule from the list of rules and checks the rhs.
 If the rhs is valid (using is_rhs_good), we will check if the symbol already
-exists in the list 'symbols' we passed into the function. If it does, we skip
-it and keep checking the remaining list of rules. If it doesn't exist we add it
-to the list of symbols and keep checking the remaining list of rules. However,
-if the rhs isn't valid, we skip the symbol without further checking.
-
-We normally use this function by passing in [] (empty list) as the 'symbols'
-parameter to get the list of all terminal symbols.
-
-=============================FUNCTION END=============================
-
-
-===============================FUNCTION===============================
-
-Define helper functions:
+exists in the list 'symbols'. If it does, we skip it and keep checking the
+remaining list of rules. If it doesn't exist we add it to the list of symbols
+and keep checking the remaining list of rules. We normally use this function by
+passing in [] as 'symbols' to get the list of all terminal symbols.
+-------------------------------------------------------------------------------
 
 	* let get_symbols_tuple (good_symbols, rules)
 	* let symbols_are_same computed_symbols rules
 
 The first function takes a list of 'rules' and a list of 'good_symbols' and
 returns a tuple of format (good_symbols, rules). This is a helper function that
-will be used later for computing fixed points.
+will be used later for computing fixed points. It is passed into the 
+computed_fixed_point function as the 'f' parameter.
 
 The second function tests if the two lists of symbols are the same, which makes
-use of equal_sets.
-
-------------------------------EXAMPLE------------------------------
-
-Suppose we have:
-	
-	type giant_nonterminals = 
-		| Conversation | Sentence | Grunt | Snore | Shout | Quiet;;
-
-	let giant_rules =
-	[
-		Snore, [T"ZZZ"];
-		Quiet, [];
-		Grunt, [T"khrgh"];
-		Shout, [T"aooogah!"];
-		Sentence, [N Quiet];
-		Sentence, [N Grunt];
-		Sentence, [N Shout];
-		Conversation, [N Snore];
-		Conversation, [N Sentence; T","; N Conversation]
-	];;
-
-Then we will get:
-
-	get_symbols_tuple ([], giant_rules) ==
-	(
-		[Conversation; Sentence; Shout; Grunt; Quiet; Snore],
-		[
-			(Snore, [T "ZZZ"]); 
-			(Quiet, []); 
-			(Grunt, [T "khrgh"]);
-			(Shout, [T "aooogah!"]); 
-			(Sentence, [N Quiet]); 
-			(Sentence, [N Grunt]);
-			(Sentence, [N Shout]); 
-			(Conversation, [N Snore]);
-			(Conversation, [N Sentence; T ","; N Conversation])
-		]
-	)
-
-----------------------------EXAMPLE END----------------------------
-
-The first function will be passed into the computed_fixed_point function
-as the 'f' parameter. The second function will be passed into the
-computed_fixed_point function as the comparison 'eq' parameter.
-
-=============================FUNCTION END=============================
-
-
-===============================FUNCTION===============================
-
-Define functions:
+use of equal_sets. It is passed into the computed_fixed_point function as the
+comparison 'eq' parameter.
+-------------------------------------------------------------------------------
 
 	* let get_good_symbols_tuple (good_symbols, rules)
 	* let get_good_symbols (good_symbols, rules)
@@ -177,43 +62,7 @@ the two lists contain the same elements.
 The second function takes a tuple and returns the first element. In our case,
 this helper function returns the list of good symbols that is returned by the
 first function.
-
-------------------------------EXAMPLE------------------------------
-
-Suppose we have:
-	
-	type giant_nonterminals = 
-		| Conversation | Sentence | Grunt | Snore | Shout | Quiet;;
-
-	let giant_rules =
-	[
-		Snore, [T"ZZZ"];
-		Quiet, [];
-		Grunt, [T"khrgh"];
-		Shout, [T"aooogah!"];
-		Sentence, [N Quiet];
-		Sentence, [N Grunt];
-		Sentence, [N Shout];
-		Conversation, [N Snore];
-		Conversation, [N Sentence; T","; N Conversation]
-	];;
-
-Then we will get:
-
-	get_good_symbols ([], giant_rules) ==
-		[Conversation; Sentence; Shout; Grunt; Quiet; Snore]
-
-----------------------------EXAMPLE END----------------------------
-
-This function is the main function in determining the good symbols to filter
-out blind alley rules.
-
-=============================FUNCTION END=============================
-
-
-===============================FUNCTION===============================
-
-Define function:
+-------------------------------------------------------------------------------
 
 	* let rec get_good_rules good_symbols rules
 	* let filter_blind_alleys grammar
@@ -229,115 +78,8 @@ then finds the proper list of good symbols from the list of rules. At last it
 uses the first function to filter out all the blind alley rules, passing in the
 list of good symbols as the 'good_symbols' parameter.
 
-------------------------------EXAMPLE------------------------------
-
-(1) Suppose we have:
-
-	type awksub_nonterminals = | Expr | Lvalue | Incrop | Binop | Num;;
-
-	let awksub_rules =
-		[
-			Expr, [T"("; N Expr; T")"];
-			Expr, [N Num];
-			Expr, [N Expr; N Binop; N Expr];
-			Expr, [N Lvalue];
-			Expr, [N Incrop; N Lvalue];
-			Expr, [N Lvalue; N Incrop];
-			Lvalue, [T"$"; N Expr];
-			Incrop, [T"++"];
-			Incrop, [T"--"];
-			Binop, [T"+"];
-			Binop, [T"-"];
-			Num, [T"0"];
-			Num, [T"1"];
-			Num, [T"2"];
-			Num, [T"3"];
-			Num, [T"4"];
-			Num, [T"5"];
-			Num, [T"6"];
-			Num, [T"7"];
-			Num, [T"8"];
-			Num, [T"9"]
-		];;
-
-	let awksub_grammar = Expr, awksub_rules;;
-
-Then we will get:
-
-	filter_blind_alleys awksub_grammar ==
-	( Expr,
-		[
-			(Expr, [T "("; N Expr; T ")"]); 
-			(Expr, [N Num]);
-			(Expr, [N Expr; N Binop; N Expr]); 
-			(Expr, [N Lvalue]);
-			(Expr, [N Incrop; N Lvalue]); 
-			(Expr, [N Lvalue; N Incrop]);
-			(Lvalue, [T "$"; N Expr]); 
-			(Incrop, [T "++"]); 
-			(Incrop, [T "--"]);
-			(Binop, [T "+"]); 
-			(Binop, [T "-"]); 
-			(Num, [T "0"]); 
-			(Num, [T "1"]);
-			(Num, [T "2"]);
-			(Num, [T "3"]); 
-			(Num, [T "4"]); 
-			(Num, [T "5"]);
-			(Num, [T "6"]); 
-			(Num, [T "7"]); 
-			(Num, [T "8"]); 
-			(Num, [T "9"])
-		]
-	)
-
-(2) Suppose we have:
-
-	type giant_nonterminals = 
-		| Conversation | Sentence | Grunt | Snore | Shout | Quiet;;
-
-	let giant_rules =
-	[
-		Snore, [T"ZZZ"];
-		Quiet, [];
-		Grunt, [T"khrgh"];
-		Shout, [T"aooogah!"];
-		Sentence, [N Quiet];
-		Sentence, [N Grunt];
-		Sentence, [N Shout];
-		Conversation, [N Snore];
-		Conversation, [N Sentence; T","; N Conversation]
-	];;
-
-	let giant_grammar = Conversation, giant_rules;;
-
-Then we have:
-
-	filter_blind_alleys giant_grammar ==
-	( Conversation,
-		[
-			(Snore, [T "ZZZ"]); 
-			(Quiet, []); 
-			(Grunt, [T "khrgh"]);
-			(Shout, [T "aooogah!"]); 
-			(Sentence, [N Quiet]); 
-			(Sentence, [N Grunt]);
-			(Sentence, [N Shout]); 
-			(Conversation, [N Snore]);
-			(Conversation, [N Sentence; T ","; N Conversation])
-		]
-	)
-
-----------------------------EXAMPLE END----------------------------
-
-=============================FUNCTION END=============================
-
-
-=============================================================================
-==================================AFTERWORD==================================
-=============================================================================
-
-Although this implementation passes all the provided test case, it may be
-considered verbose since it involves quite a few helper functions. There should
-be a way to provide a more concise implementation, but for homework purposes,
-I believe this will suffice.
+===================================AFTERWORD===================================
+Although this implementation passes all the provided test cases, it may be
+considered verbose involving many helper functions. There should be a more
+concise implementation, but for homework purposes, I believe this will suffice.
+===================================AFTERWORD===================================
