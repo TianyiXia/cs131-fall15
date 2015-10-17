@@ -120,3 +120,27 @@ let test5 =
       ([(Expr, [N Term; N Binop; N Expr]); (Term, [N Num]); (Num, [T "3"]);
 	(Binop, [T "-"]); (Expr, [N Term]); (Term, [N Num]); (Num, [T "4"])],
        ["+"; "$"; "5"; "-"; "6"]));;
+
+type sentence_symbols =
+  | Sentence | Subject | Predicate | Article | Noun | Verb | DirectObject
+
+let sentence_grammar = 
+  (Sentence, function
+    | Sentence -> [[N Subject; N Predicate]]
+    | Subject -> [[N Article; N Noun]]
+    | Predicate -> [[N Verb; N DirectObject]]
+    | DirectObject -> [[N Article; N Noun]]
+    | Article -> [[T"THE"]; [T"A"]]
+    | Noun -> [[T"DOG"]; [T"MAN"]; [T"WOMAN"]]
+    | Verb -> [[T"BITES"]]
+  )
+
+let test_1 =
+  ((parse_prefix sentence_grammar accept_all 
+    ["THE"; "DOG"; "BITES"; "A"; "MAN"])
+  = Some
+  ([(Sentence, [N Subject; N Predicate]); (Subject, [N Article; N Noun]);
+  (Article, [T "THE"]); (Noun, [T "DOG"]);
+  (Predicate, [N Verb; N DirectObject]); (Verb, [T "BITES"]);
+  (DirectObject, [N Article; N Noun]); (Article, [T "A"]);
+  (Noun, [T "MAN"])], []));;
