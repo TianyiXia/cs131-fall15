@@ -1,0 +1,75 @@
+-------------------------------------------------------------------------------
+
+	* find_rules nonterm rules
+	* convert_grammar gram1
+
+The first function is the second part of the returned value in convert_grammar.
+It matches 'nonterm' and returns a list of subrules from the hw1 grammar.
+
+The second function takes 'gram1', a grammar from hw1 and returns the functions
+mentioned above, which are used for matching nonterminal symbols.
+
+-------------------------------------------------------------------------------
+
+	* and_match rules rule accpt deriv frag
+	* or_match rules symbol rules_symbol accpt deriv frag
+
+These two functions are defined as mutually recursive functions since they
+call each other in their own implementations.
+
+The 'and_match' function matches all fragments for a SINGLE rule while the
+'or_match' matches all the rules for a given nonterminal symbol. These two
+functions have simple logic and are quite easy to implement.
+
+Function 'and_match' checks the SINGLE rule, which is represented as an array
+(e.g. [N Term; N Binop; N Expr]) and if the rule is empty then it calls the
+'accpt' function on 'deriv' and 'frag', signifying that the rule has been
+matched. Note here that 'frag' may not be empty since it may have leftovers.
+If the rule is not empty, then we check 'frag', which is also an array
+(e.g. ["$"; "5"; "+"; "3"]). If 'frag' is empty, then we have matched all
+tokens in the input fragment but the rule has not been completely matched, so
+the rule fails and we return None. If 'frag' is not empty, we extract the
+first elements from 'frag' and 'rule' and here we would have two cases for
+'rule'. If rule is a terminal symbol, we check the if the value matches the
+element from 'frag'. If it does, then we recursively match the other elements
+in 'frag' and 'rule' by calling 'and_match' recursively. Otherwise it is a
+nonterminal symbol and we call 'or_match' passing in the value of the
+nonterminal symbol and the rule-function corresponding to the symbol.
+
+Then comes the 'or_match' function. It checks if the passed in rules returned
+by the rule-function is empty. If it is then we fail to match and return None.
+Otherwise we extract the first rule in the array of rules and call 'and_match'
+to match the rule with the fragments. If 'and_match' returns None, then we
+recursively call 'or_match' to try the next rule in the array of rules.
+Otherwise we return whatever 'and_match' returns, which should be created by
+the 'accpt' function, which will return an object created by the 'Some'
+constructor.
+
+-------------------------------------------------------------------------------
+
+	* parse_prefix grammar accpt frag
+
+This function extracts the 'start' symbol from 'grammar' and 'rules' from 'grammar'. It then simply calls 'or_match' and passes in the parameters:
+
+	* rules: 'rules' (the rule-function associated with 'start')
+	* symbol: 'start'
+	* rules_symbol: 'rules start' (the list of rules associated with start)
+	* accpt: 'accpt' (the accept function)
+	* deriv: '[]' (empty list of derivations)
+	* frag: 'frag' (the fragments)
+
+===================================AFTERWORD===================================
+This implementation of parse_prefix passes all the sample test cases and my
+own test cases. However this algorithm does not work for left-associative
+grammar. Suppose we have the following grammar subset:
+
+	* Expr -> [ [N Expr; N Binop; N Term]; [N Term] ]
+
+then with our algorithm we will recursively call the matching function, we
+notice that the first 'N Expr' will always evaluate to '[N Expr; N Binop; N
+Term]', which is itself, since we process the rules in order. Then eventually
+the function will, as I quote Professor Eggert, "blow the stack". We will run
+out of memory and the OCaml will crash. We won't get a success or failure from
+this function. Another aspect is that the algorithm is not efficient and takes
+a lot of time to evaluate a large input of 'frag', shown by sample test case 4.
+===================================AFTERWORD===================================
