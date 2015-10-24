@@ -1,4 +1,4 @@
-import java.util.concurrent.atomic.AtomicIntegerArray
+import java.util.concurrent.atomic.AtomicIntegerArray;
 
 class GetNSetState implements State {
 	private AtomicIntegerArray value;
