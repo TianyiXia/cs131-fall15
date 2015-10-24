@@ -1,4 +1,4 @@
-import java.util.concurrent.atomic.AtomicInteger
+import java.util.concurrent.atomic.AtomicInteger;
 
 class BetterSorryState implements State {
 	private byte[] value;
