@@ -7,7 +7,7 @@ run="java"
 
 echo "  * Null Test *"
 echo ""
-for i in {1..25}
+for i in {1..30}
 do
 	echo -en "  $i\t"
 	$run UnsafeMemory Null $1 $2 6 5 6 3 0 3
@@ -16,7 +16,7 @@ echo ""
 
 echo "  * Synchronized Test *"
 echo ""
-for i in {1..25}
+for i in {1..30}
 do
 	echo -en "  $i\t"
 	$run UnsafeMemory Synchronized $1 $2 6 5 6 3 0 3
@@ -25,7 +25,7 @@ echo ""
 
 echo "  * Unsynchronized Test"
 echo ""
-for i in {1..25}
+for i in {1..30}
 do
 	echo -en "  $i\t"
 	$run UnsafeMemory Unsynchronized $1 $2 6 5 6 3 0 3
@@ -34,7 +34,7 @@ echo ""
 
 echo "  * GetNSet Test *"
 echo ""
-for i in {1..25}
+for i in {1..30}
 do
 	echo -en "  $i\t"
 	$run UnsafeMemory GetNSet $1 $2 6 5 6 3 0 3
@@ -43,7 +43,7 @@ echo ""
 
 echo "  * BetterSafe Test *"
 echo ""
-for i in {1..25}
+for i in {1..30}
 do
 	echo -en "  $i\t"
 	$run UnsafeMemory BetterSafe $1 $2 6 5 6 3 0 3
@@ -52,7 +52,7 @@ echo ""
 
 echo "  * BetterSorry Test *"
 echo ""
-for i in {1..25}
+for i in {1..30}
 do
 	echo -en "  $i\t"
 	$run UnsafeMemory BetterSorry $1 $2 6 5 6 3 0 3
