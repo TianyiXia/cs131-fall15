@@ -18,8 +18,8 @@ class BetterSorryState implements State {
 		}
 		AtomicInteger aii = new AtomicInteger(value[i]);
 		AtomicInteger aij = new AtomicInteger(value[j]);
-		value[i] = (byte) aii.decrementAndGet();
-		value[j] = (byte) aij.incrementAndGet();
+		value[i] = (byte) aii.getAndDecrement();
+		value[j] = (byte) aij.getAndIncrement();
 		return true;
 	} 
 }
