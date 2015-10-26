@@ -1,8 +1,22 @@
+import java.util.Timer;
+import java.util.TimerTask;
+
+class TimeoutTestTask extends TimerTask {
+	TimeoutTestTask() {}
+
+	public void run() {
+		System.err.println("Execution timed out.");
+		System.exit(1);
+	}
+}
+
 class UnsafeMemory {
 	public static void main(String args[]) {
 		if (args.length < 3)
 			usage(null);
 		try {
+			Timer timer = new Timer();
+
 			int nThreads = parseInt (args[1], 1, Integer.MAX_VALUE);
 			int nTransitions = parseInt (args[2], 0, Integer.MAX_VALUE);
 			byte maxval = (byte) parseInt (args[3], 0, 127);
@@ -25,6 +39,9 @@ class UnsafeMemory {
 				s = new BetterSorryState(stateArg, maxval);
 			else
 				throw new Exception(args[0]);
+
+			timer.schedule(new TimeoutTestTask(), 1000);
+
 			dowork(nThreads, nTransitions, s);
 			test(value, s.current(), maxval);
 			System.exit (0);
