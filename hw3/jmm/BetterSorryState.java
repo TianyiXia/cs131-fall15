@@ -25,7 +25,7 @@ class BetterSorryState implements State {
 	public byte[] current() {
 		byte[] current = new byte[value.length];
 		for (int i = 0; i < value.length; i++) {
-			current[i] = (byte) value[i].intValue();
+			current[i] = (byte) value[i].get();
 		}
 		return current;
 	}
