@@ -14,32 +14,32 @@ do
 done
 echo ""
 
-echo "  * Synchronized Test *"
-echo ""
-for i in {1..50}
-do
-	# echo -en "  $i\t"
-	$run UnsafeMemory Synchronized $1 $2 20 5 6 3 0 3 | grep -Eow "[0-9.]+"
-done
-echo ""
+# echo "  * Synchronized Test *"
+# echo ""
+# for i in {1..50}
+# do
+# 	# echo -en "  $i\t"
+# 	$run UnsafeMemory Synchronized $1 $2 20 5 6 3 0 3 | grep -Eow "[0-9.]+"
+# done
+# echo ""
 
-echo "  * Unsynchronized Test"
-echo ""
-for i in {1..50}
-do
-	# echo -en "  $i\t"
-	$run UnsafeMemory Unsynchronized $1 $2 20 5 6 3 0 3 | grep -Eow "[0-9.]+"
-done
-echo ""
+# echo "  * Unsynchronized Test"
+# echo ""
+# for i in {1..50}
+# do
+# 	# echo -en "  $i\t"
+# 	$run UnsafeMemory Unsynchronized $1 $2 20 5 6 3 0 3 | grep -Eow "[0-9.]+"
+# done
+# echo ""
 
-echo "  * GetNSet Test *"
-echo ""
-for i in {1..50}
-do
-	# echo -en "  $i\t"
-	$run UnsafeMemory GetNSet $1 $2 20 5 6 3 0 3 | grep -Eow "[0-9.]+"
-done
-echo ""
+# echo "  * GetNSet Test *"
+# echo ""
+# for i in {1..50}
+# do
+# 	# echo -en "  $i\t"
+# 	$run UnsafeMemory GetNSet $1 $2 20 5 6 3 0 3 | grep -Eow "[0-9.]+"
+# done
+# echo ""
 
 echo "  * BetterSafe Test *"
 echo ""
