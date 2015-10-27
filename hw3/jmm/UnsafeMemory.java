@@ -40,7 +40,7 @@ class UnsafeMemory {
 			else
 				throw new Exception(args[0]);
 
-			timer.schedule(new TimeoutTestTask(), 4000);
+			timer.schedule(new TimeoutTestTask(), 8000);
 
 			dowork(nThreads, nTransitions, s);
 			test(value, s.current(), maxval);
