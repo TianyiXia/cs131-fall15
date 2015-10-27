@@ -5,14 +5,14 @@ echo ""
 
 run="java"
 
-echo "  * Null Test *"
-echo ""
-for i in {1..50}
-do
-	# echo -en "  $i\t"
-	$run UnsafeMemory Null $1 $2 6 5 6 3 0 3 | grep -Eow "[0-9.]+"
-done
-echo ""
+# echo "  * Null Test *"
+# echo ""
+# for i in {1..50}
+# do
+# 	# echo -en "  $i\t"
+# 	$run UnsafeMemory Null $1 $2 6 5 6 3 0 3 | grep -Eow "[0-9.]+"
+# done
+# echo ""
 
 # echo "  * Synchronized Test *"
 # echo ""
@@ -43,7 +43,7 @@ echo ""
 
 echo "  * BetterSafe Test *"
 echo ""
-for i in {1..50}
+for i in {1..10}
 do
 	# echo -en "  $i\t"
 	$run UnsafeMemory BetterSafe $1 $2 20 5 6 3 0 3 | grep -Eow "[0-9.]+"
@@ -52,7 +52,7 @@ echo ""
 
 echo "  * BetterSorry Test *"
 echo ""
-for i in {1..50}
+for i in {1..10}
 do
 	# echo -en "  $i\t"
 	$run UnsafeMemory BetterSorry $1 $2 20 5 6 3 0 3 | grep -Eow "[0-9.]+"
