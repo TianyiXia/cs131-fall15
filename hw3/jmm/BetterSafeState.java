@@ -15,14 +15,16 @@ class BetterSafeState implements State {
 	public byte[] current() { return value; }
 
 	public boolean swap(int i, int j) {
-		l.lock();
 		if (value[i] <= 0 || value[j] >= maxval) {
-			l.unlock();
 			return false;
 		}
-		value[i]--;
-		value[j]++;
-		l.unlock();
-		return true;
+		l.lock();
+		try {
+			value[i]--;
+			value[j]++;
+			return true;
+		} finally {
+			l.unlock();
+		}
 	}
 }
