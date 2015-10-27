@@ -46,7 +46,7 @@ echo ""
 for i in {1..10}
 do
 	# echo -en "  $i\t"
-	$run UnsafeMemory BetterSafe $1 $2 20 5 6 3 0 3 | grep -Eow "[0-9.]+"
+	$run UnsafeMemory BetterSafe $1 $2 100 2 4 6 8 10 10 20 30 40 50 5 6 3 0 3 | grep -Eow "[0-9.]+"
 done
 echo ""
 
@@ -55,7 +55,7 @@ echo ""
 for i in {1..10}
 do
 	# echo -en "  $i\t"
-	$run UnsafeMemory BetterSorry $1 $2 20 5 6 3 0 3 | grep -Eow "[0-9.]+"
+	$run UnsafeMemory BetterSorry $1 $2 100 2 4 6 8 10 10 20 30 40 50 5 6 3 0 3 | grep -Eow "[0-9.]+"
 done
 echo ""
 
