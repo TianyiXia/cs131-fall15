@@ -4,11 +4,11 @@ class BetterSafeState implements State {
 	private byte[] value;
 	private byte maxval;
 
-	private final ReentrantLock l = new ReentrantLock();
+	private ReentrantLock l;
 
-	BetterSafeState(byte[] v) { value = v; maxval = 127; }
+	BetterSafeState(byte[] v) { value = v; maxval = 127; l = new ReentrantLock(); }
 
-	BetterSafeState(byte[] v, byte m) { value = v; maxval = m; }
+	BetterSafeState(byte[] v, byte m) { value = v; maxval = m; l = new ReentrantLock(); }
 
 	public int size() { return value.length; }
 
