@@ -7,7 +7,7 @@ class BetterSorryState implements State {
 	BetterSorryState(byte[] v) {
 		value = new AtomicInteger[v.length];
 		for (int i = 0; i < v.length; i++) {
-			value[i] = new AtomicInteger[v[i]];
+			value[i] = new AtomicInteger(v[i]);
 		}
 		maxval = 127;
 	}
@@ -15,7 +15,7 @@ class BetterSorryState implements State {
 	BetterSorryState(byte[] v, byte m) { 
 		value = new AtomicInteger[v.length];
 		for (int i = 0; i < v.length; i++) {
-			value[i] = new AtomicInteger[v[i]];
+			value[i] = new AtomicInteger(v[i]);
 		}
 		maxval = m;
 	}
@@ -24,10 +24,10 @@ class BetterSorryState implements State {
 
 	public byte[] current() {
 		byte[] current = new byte[value.length];
-		for (int i = 0; i < v.length; i++) {
+		for (int i = 0; i < value.length; i++) {
 			current[i] = (byte) value[i].intValue();
 		}
-		return value;
+		return current;
 	}
 
 	public boolean swap(int i, int j) {
