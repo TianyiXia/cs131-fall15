@@ -1,0 +1,46 @@
+\documentclass[10pt]{article}
+\usepackage[left=1in,top=1in,right=1in,bottom=1in]{geometry}
+
+\begin{document}
+\title{UCLA Computer Science 131 Homework 3}
+\author{Qingwei Lan (404458762)}
+
+\maketitle
+
+\section{Testing Environment Information \& Setup}
+
+Testing is on \texttt{lnxsrv05.seas.ucla.edu} with Java version \texttt{java version "1.8.0\_45"}. The CPU (\texttt{Intel(R) Xeon(R) CPU E5620 @ 2.40GHz}) has 16 4-core-processors. It has \texttt{32GB} memory.
+
+\section{Individual Implementation Explanations}
+
+\texttt{UnsafeMemory.java}: This module is modified to signal a timeout when the process hangs, which will happen in case of a deadlock, which is common in the testing of \texttt{Unsynchronized}, since it encounters deadlocks often. \\ \\
+\texttt{UnsynchronizedState.java}: This module is implemented similar to \texttt{Synchronized} except that it removes the \texttt{synchronized} keyword. By removing this keyword, the program will not synchronize and will be extremely unreliable, subject to data races. This is also shown in the tests. \\ \\
+\texttt{GetNSetState.java}: This module uses the \texttt{AtomicIntegerArray} and the \texttt{get} and \texttt{set} methods of the library \texttt{java.util.concurrent.atomic.AtomicIntegerArray}. This implementation will guarantee that the array elements are modified atomically, but it will not guarantee that the upper/lower limit is satisfied for all threads. There will be a data race condition in which two threads both passed the upper/lower limit test but then both modified the same element to get an out of bounds result. \\ \\
+\texttt{BetterSafeState.java}: This module is designed with locks using \texttt{ReentrantLock} within the library that is called \texttt{java.util.concurrent.locks.ReentrantLock} and will lock the the state before accessing array elements. This makes the implementation thread-safe and 100\% reliable but also faster than the \texttt{Synchronized} model. As a side note, I originally called \texttt{lock()} after the upper/lower limit testing. This will result in the same data race condition described above, where two threads both passed the upper/lower limit test but then both modified the same element to get an out of bounds result. Thus I moved the \texttt{lock()} to the very beginning of \texttt{swap()} to eliminate this race condition. \\ \\
+\texttt{BetterSorryState.java}: This module is designed with an array of elements of \texttt{AtomicInteger} within the library \texttt{java.util.concurrent.atomic.AtomicInteger}. We create an array of \texttt{AtomicInteger} and initialize them to be the values in \texttt{byte[] v}. This implementation will ensure that all elements of the array will be updated atomically with fast performance, but it is still not free of the race condition mentioned above, where two threads both passed the upper/lower limit test but then both modified the same element to get an out of bounds result.
+
+
+\section{Performance \& Reliability Testing}
+
+All tests were conducted using \texttt{java UnsafeMemory <state type> 8 <\#transitions> 100 2 4 6 8 10 10 20 30 40 50 5 6 3 0 3 10 20 30 40 50}. \\
+
+\begin{tabular}{ l | l | l | l | l | l | l | }
+\#Transitions & Null & Synchronized & GetNSet & BetterSafe & BetterSorry & Unsynchronized \\
+$10^4$ & 7559.85 & 10079.59 & 11213.30 & 13002.23 & 8512.51 & 7884.21 \\
+$10^5$ & 1624.74 & 4807.44 & 2677.43 & 4701.63 & 2039.17 & 1811.51 \\
+$10^6$ & 1760.39 & 3108.09 & 1865.67 & 1564.16 & 1471.79 & 1283.51  \\
+$10^7$ & 122.81 & 2846.85 & 1525.96 & 934.39 & 1034.02 & 312.32  \\
+\end{tabular} \\ \\ \\
+\texttt{Null \& Synchronized}: Since \texttt{Synchronized} uses the \texttt{synchronized} keyword, the path is deterministic and is thus reliable. It is also DTF since it is synchronized. \texttt{Null} does nothing and returns \texttt{true} so it is also 100\% reliable in this case. I tested both with different \#transitions, \#threads, size and sum of array. The basic trend is that average transition time increases with \#thread due to overhead and decreases with \# of transitions since the large number of transitions level out the overhead caused by threads. I noticed that performance peaked at around 8 threads with $10^7$ transitions. \\ \\
+\texttt{Unsynchronized}: This version removes the \texttt{synchronized} keyword and does not have any synchronizing within it, so its path is undetermined and is thus unreliable. By testing, it almost always produces a mismatch or hangs (from my tests by running \texttt{java UnsafeMemory Unsynchronized 8 100000 10 2 4 6 8 10}  for 500 times, it produces a mismatch every time). \\ \\
+\texttt{GetNSet}: This version is more reliable than \texttt{Unsynchronized} but still produces data races. The data race condition is explained in the Individual Implementations section above. This implementation is reliable most of the times but is subject to race conditions when the number of threads is large and array has elements close to the boundary conditions. I wrote a specific test script to test this condition. It runs the command \texttt{java UnsafeMemory GetNSet 8 1000 6 5 6 6 6 6} for 500 times and it produced a mismatch 14 times. We can calculate the reliability as follows $reliability = \frac{\# \ tests\ successful}{\#\ tests\ total} = \frac{500-14}{500} = 97.2\%$. So this implementation is quite reliable in this sense that it maintains 97\% reliability even in bad cases of input. \\ \\
+\texttt{BetterSafe}: This implementation is also 100\% reliable because the path is deterministic. Since we put locks around the critical section, only one thread can access the shared data and therefore there will be no race conditions. This implementation also has better performance than \texttt{Synchronized} because locks are lightweight compared to the implementations of the \texttt{synchronized} keyword. \\ \\
+\texttt{BetterSorry}: This version is more reliable than \texttt{Unsynchronized} but still not 100\% reliable. The only data race condition it will encounter is explained in the Individual Implementations section above. However, \texttt{Unsynchronized} does not enforce atomic updating while \texttt{BetterSorry} does, so this version is more reliable than \texttt{Unsynchronized} since it will not encounter one of the data race conditions that \texttt{Unsynchronized} will. I also wrote a specific test script to test this version, which also tests the case where the number of threads is large and array has elements close to the boundary conditions. The script runs \texttt{java UnsafeMemory BetterSorry 8 1000 6 5 6 6 6 6} for 500 times and it produced a mismatch 7 times. We calculate reliability as shown in the \texttt{GetNSet} case $reliability = \frac{\# \ tests\ successful}{\#\ tests\ total} = \frac{500-7}{500} = 98.6\%$. It has better reliability than \texttt{GetNSet} in bad cases, and definitely better than \texttt{Unsynchronized}. It also yields better performance than \texttt{Synchronized}. When compared to \texttt{BetterSafe}, \texttt{BetterSorry} is also faster because it does not lock up the data access as does \texttt{BetterSafe}.
+
+\section{Conclusion \& Recommendations}
+
+According to the assignment, GDI seems to want to find patterns in current data, which involves only reading the data and analyzing. This means that it would not actually write to the data that is recorded. Thus with read-only data we do not need to synchronize even if we have multiple readers, so my recommendation would be \texttt{Unsynchronized}.
+
+But if we need to write to the data, I would recommend \texttt{BetterSorry} since runs fast and maintains a high probability (typically 100\% for normal cases) even at boundaries.
+
+\end{document}
