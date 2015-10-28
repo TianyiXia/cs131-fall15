@@ -1,0 +1,85 @@
+-------------------------------------------------------------------------------
+* subset a b: Recursively check if all elements of a are also in b.
+-------------------------------------------------------------------------------
+* equal_sets a b: Is true when subset a b && subset b a is are true.
+-------------------------------------------------------------------------------
+* set_union a b: The only reason the function is so verbose is because it
+                 removes all duplicates from the returned results.
+-------------------------------------------------------------------------------
+* set_intersection a b: Recursively check if element exists in both a and b.
+-------------------------------------------------------------------------------
+* set_diff a b: Recursively find elements in a but not in b.
+-------------------------------------------------------------------------------
+* computed_fixed_point eq f x: Recursively check if f(x) == x, if not, call
+                               the function itself again.
+-------------------------------------------------------------------------------
+* computed_periodic_point eq f p x: Recusrively compute the p-th time f(f..(x))
+                                    is computed and check if it is equal to x.
+-------------------------------------------------------------------------------
+
+	* let rec is_symbol_good rules sym
+	* let rec is_rhs_good rules rhs
+
+These two helper functions check the right-hand-side of a rule to see if
+all the symbols exist in the list of rules, if not then it is a blind alley
+rule. If it does, we return true for further processing. If it is a terminal
+symbol then it is a good rhs element.
+-------------------------------------------------------------------------------
+
+	* let rec get_terminal_symbols symbols rules
+
+This function extracts a rule from the list of rules and checks the rhs.
+If the rhs is valid (using is_rhs_good), we will check if the symbol already
+exists in the list 'symbols'. If it does, we skip it and keep checking the
+remaining list of rules. If it doesn't exist we add it to the list of symbols
+and keep checking the remaining list of rules. We normally use this function by
+passing in [] as 'symbols' to get the list of all terminal symbols.
+-------------------------------------------------------------------------------
+
+	* let get_symbols_tuple (good_symbols, rules)
+	* let symbols_are_same computed_symbols rules
+
+The first function takes a list of 'rules' and a list of 'good_symbols' and
+returns a tuple of format (good_symbols, rules). This is a helper function that
+will be used later for computing fixed points. It is passed into the 
+computed_fixed_point function as the 'f' parameter.
+
+The second function tests if the two lists of symbols are the same, which makes
+use of equal_sets. It is passed into the computed_fixed_point function as the
+comparison 'eq' parameter.
+-------------------------------------------------------------------------------
+
+	* let get_good_symbols_tuple (good_symbols, rules)
+	* let get_good_symbols (good_symbols, rules)
+
+The first function is the main function that uses the computed_fixed_point
+function for determining the set of good symbols. The function will return a
+tuple of format (good_symbols, rules) with 'good_symbols' holding the list of
+good symbols. The good symbols will be determined recursively by using the
+computed_fixed_point function which will recursively process the tuple until
+the two lists contain the same elements.
+
+The second function takes a tuple and returns the first element. In our case,
+this helper function returns the list of good symbols that is returned by the
+first function.
+-------------------------------------------------------------------------------
+
+	* let rec get_good_rules good_symbols rules
+	* let filter_blind_alleys grammar
+
+The first function filters out all the blind alley rules, or, the rules that
+are not good. It recursively pulls elements from the list of rules, examines it
+using the is_rhs_good function and if is_rhs_good returns true, the rule is
+included otherwise the rule is discarded.
+
+The second function is the final function that is called to return the proper
+filtered rules. It first separates the list of rules with the start symbol,
+then finds the proper list of good symbols from the list of rules. At last it
+uses the first function to filter out all the blind alley rules, passing in the
+list of good symbols as the 'good_symbols' parameter.
+
+===================================AFTERWORD===================================
+Although this implementation passes all the provided test cases, it may be
+considered verbose involving many helper functions. There should be a more
+concise implementation, but for homework purposes, I believe this will suffice.
+===================================AFTERWORD===================================
