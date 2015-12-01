@@ -187,13 +187,15 @@ class ProxyHerdServer(protocol.ServerFactory):
 		self.numClients = 0
 		logFileName = self.serverName + ".log"
 		logging.basicConfig(filename=logFileName, level=logging.DEBUG)
-		self.report("SERVER {0} started at PORT {1}".format(self.serverName, self.portNumber))
+		log = "[{0}] : SERVER {1} started at PORT {2}.".format(self.serverName, self.serverName, self.portNumber)
+		logging.info(log)
 
 	def buildProtocol(self, addr):
 		return ProxyHerdProtocol(self)
 
 	def stopFactory(self):
-		self.report("SERVER {0} with PORT {1} stopped".format(self.serverName, self.portNumber))
+		log = "[{0}] : SERVER {0} with PORT {1} stopped.".format(self.serverName, self.serverName, self.portNumber)
+		logging.info(log)
 
 
 class ProxyHerdClientProtocol(LineReceiver):
