@@ -37,7 +37,7 @@ class ProxyHerdProtocol(LineReceiver):
 		self.factory = factory
 
 	def report(self, msg):
-		log = "[{0}] : {1}.".format(self.factory.name, msg)
+		log = "[{0}] : {1}.".format(self.factory.serverName, msg)
 		logging.info(log)
 		print log
 
@@ -88,7 +88,7 @@ class ProxyHerdProtocol(LineReceiver):
 		else:
 			timeString = "-" + repr(timeDiff)
 
-		response = "AT {0} {1} {2} {3} {4}".format(self.factory.name, timeDiff, clientID, clientCoord, clientTime)
+		response = "AT {0} {1} {2} {3} {4}".format(self.factory.serverName, timeDiff, clientID, clientCoord, clientTime)
 		self.transport.write(response + "\n")
 
 		if clientID not in self.factory.users:
