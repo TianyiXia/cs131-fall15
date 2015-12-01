@@ -147,8 +147,8 @@ class ProxyHerdProtocol(LineReceiver):
 
 		# parse coordinates
 		clientCoord = re.sub(r'[-]', ' -', clientCoord)
-		clientCoord = re.sub(r'[+]', ' +', clientCoord)
-		coord = ",".join(clientCoord.split(" "))
+		clientCoord = re.sub(r'[+]', ' +', clientCoord).split(" ")
+		coord = clientCoord[0] + "," + clientCoord[1]
 
 		# API request
 		request = "{0}location={1}&radius={2}&sensor=false&key={3}".format(apiurl, coord, clientRadius, apikey)
