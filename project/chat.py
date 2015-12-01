@@ -42,16 +42,16 @@ class ProxyHerdProtocol(LineReceiver):
 
 	def connectionMade(self):
 		self.factory.numClients += 1
-		log = "New connection, total: {0}".format(self.factory.numClients)
+		log = "[CONNECTION] New connection, total: {0}".format(self.factory.numClients)
 		self.report(log)
 
 	def connectionLost(self, reasonLost):
 		self.factory.numClients -= 1
-		log = "Connection closed, total: {0}".format(self.factory.numClients)
+		log = "[CONNECTION] Connection closed, total: {0}".format(self.factory.numClients)
 		self.report(log)
 
 	def lineReceived(self, line):
-		self.report("RECEIVED: {0}".format(line))
+		self.report("[REQUEST] Recieved: {0}".format(line))
 
 		args = line.strip().split(" ")
 
@@ -62,7 +62,7 @@ class ProxyHerdProtocol(LineReceiver):
 		elif args[0] == "AT":
 			self.respondAT(line)
 		else: # not found
-			self.report("Invalid request.")
+			self.report("[REQUEST] Invalid request")
 			self.transport.write(self.invalidLine(line))
 			return
 
@@ -71,7 +71,7 @@ class ProxyHerdProtocol(LineReceiver):
 		args = line.strip().split(" ")
 
 		if len(args) != 4:
-			self.report("Invalid #args for 'IAMAT'")
+			self.report("[REQUEST] Invalid #args for 'IAMAT'")
 			self.transport.write(self.invalidLine(line))
 			return
 
@@ -91,16 +91,16 @@ class ProxyHerdProtocol(LineReceiver):
 		self.transport.write(response + "\n")
 
 		if clientID not in self.factory.users:
-			self.report("New client [IAMAT]: {0}".format(clientID))
+			self.report("[IAMAT] New client: {0}".format(clientID))
 			self.factory.users[clientID] = {"msg" : response, "time" : clientTime}
 			# flood
 			self.propagateLocations(response)
 		else:
 			if self.factory.users[clientID]['time'] > clientTime:
-				self.report("Existing client expired [IAMAT]: {0}".format(clientID))
+				self.report("[IAMAT] Existing client with fresher time: {0}".format(clientID))
 				return
 			else:
-				self.report("Existing client updated [IAMAT]: {0}".format(clientID))
+				self.report("[IAMAT] Existing client updated: {0}".format(clientID))
 				self.factory.users[clientID] = {"msg" : response, "time" : clientTime}
 				self.propagateLocations(response)
 		return
@@ -109,7 +109,7 @@ class ProxyHerdProtocol(LineReceiver):
 		args = line.strip().split(" ")
 
 		if len(args) != 6:
-			self.report("Invalid #args for 'AT'")
+			self.report("[REQUEST] Invalid #args for 'AT'")
 			self.transport.write(self.invalidLine(line))
 			return
 
@@ -117,11 +117,11 @@ class ProxyHerdProtocol(LineReceiver):
 		_, serverName, timeDiff, clientID, clientCoord, clientTime = args
 
 		if clientID in self.factory.users and clientTime <= self.factory.users[clientID]["time"]:
-			self.report("Duplicate location update from {0}".format(serverName))
+			self.report("[AT] Existing client with fresher time: {0}".format(serverName))
 			return
 
 		if clientID in self.factory.users:
-			self.report("Existing client updated [IAMAT]: {0}".format(clientID))
+			self.report("[AT] Existing client updated: {0}".format(clientID))
 		else:
 			self.report("New client [IAMAT]: {0}".format(clientID))
 
@@ -133,7 +133,7 @@ class ProxyHerdProtocol(LineReceiver):
 		args = line.strip().split(" ")
 
 		if len(args) != 4:
-			self.report("Invalid #args for 'WHATSAT'")
+			self.report("[REQUEST] Invalid #args for 'WHATSAT'")
 			self.transport.write(self.invalidLine(line))
 			return
 
@@ -141,17 +141,17 @@ class ProxyHerdProtocol(LineReceiver):
 		_, clientID, clientRadius, clientLimit = args
 
 		response = self.factory.users[clientID]["msg"]
-		self.report("Found response: {0}".format(response))
+		self.report("[WHATSAT] Found entry: {0}".format(response))
 		_, _, _, _, clientCoord, _ = response.split(" ")
 
 		# parse coordinates
 		clientCoord = re.sub(r'[-]', ' -', clientCoord)
-		clientCoord = re.sub(r'[+]', ' +', clientCoord).split(" ")
+		clientCoord = re.sub(r'[+]', ' +', clientCoord).split()
 		coord = clientCoord[0] + "," + clientCoord[1]
 
 		# API request
 		request = "{0}location={1}&radius={2}&sensor=false&key={3}".format(apiurl, coord, clientRadius, apikey)
-		self.report("API request created: {0}".format(request))
+		self.report("[WHATSAT] API request created: {0}".format(request))
 		apiresponse = getPage(request)
 		apiresponse.addCallback(
 			lambda r:
@@ -165,13 +165,13 @@ class ProxyHerdProtocol(LineReceiver):
 	def propagateLocations(self, response):
 		for name in neighbors[self.factory.serverName]:
 			reactor.connectTCP('localhost', ports[name], ProxyHerdClient(response))
-			self.report("Sent location from {0} to {1}".format(self.factory.serverName, name))
+			self.report("[FLOOD] Sent location from {0} to {1}".format(self.factory.serverName, name))
 		return
 
 	def printLocations(self, response, clientLimit, clientID):
 		jsonData = json.loads(response)
 		results = json.dumps(jsonData, indent=4)
-		self.report("Google API response: {0}".format(results))
+		self.report("[API] Google API response: {0}".format(results))
 		msg = self.factory.users[clientID]["msg"]
 		writeBack = "{0}\n{1}\n\n".format(msg, results)
 		self.transport.write(writeBack)
