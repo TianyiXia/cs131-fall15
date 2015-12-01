@@ -79,6 +79,11 @@ class ProxyHerdProtocol(LineReceiver):
 		_, clientID, clientCoord, ct = args
 
 		clientTime = float(ct)
+		if ct <= 0:
+			self.report("[REQUEST] POSIX time has to be positive")
+			self.transport.write(self.invalidLine(line))
+			return
+
 		timeDiff = time.time() - clientTime
 		timeString = ""
 
