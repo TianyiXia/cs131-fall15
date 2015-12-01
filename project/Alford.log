@@ -1,0 +1,28 @@
+INFO:root:[Alford] : SERVER Alford started at PORT 12550.
+INFO:root:[Alford] : [CONNECTION] Connection established, total: 1.
+INFO:root:[Alford] : [CONNECTION] Connection established, total: 2.
+INFO:root:[Alford] : [REQUEST] Recieved: AT Bolden 48161696.8608 qingwei.seas.ucla.edu +34.068930-118.445127 1400794645.39.
+INFO:root:[Alford] : [AT] New client: qingwei.seas.ucla.edu.
+INFO:root:[Alford] : [FLOOD] Sent location from Alford to Parker.
+INFO:root:[Alford] : [FLOOD] Sent location from Alford to Powell.
+INFO:root:[Alford] : [CONNECTION] Connection closed, total: 1.
+INFO:root:[Alford] : [REQUEST] Recieved: AT Bolden 48161696.8608 qingwei.seas.ucla.edu +34.068930-118.445127 1400794645.39.
+INFO:root:[Alford] : [AT] Existing client with fresher time: qingwei.seas.ucla.edu.
+INFO:root:[Alford] : [CONNECTION] Connection closed, total: 0.
+INFO:root:[Alford] : [CONNECTION] Connection established, total: 1.
+INFO:root:[Alford] : [REQUEST] Recieved: IAMAT anqi.seas.ucla.edu +35.068930-118.445127 1400994645.392014450.
+INFO:root:[Alford] : [IAMAT] New client: anqi.seas.ucla.edu.
+INFO:root:[Alford] : [FLOOD] Sent location from Alford to Parker.
+INFO:root:[Alford] : [FLOOD] Sent location from Alford to Powell.
+INFO:root:[Alford] : [CONNECTION] Connection established, total: 2.
+INFO:root:[Alford] : [CONNECTION] Connection established, total: 3.
+INFO:root:[Alford] : [REQUEST] Recieved: AT Alford 47961701.8664 anqi.seas.ucla.edu +35.068930-118.445127 1400994645.39.
+INFO:root:[Alford] : [AT] Existing client updated: anqi.seas.ucla.edu.
+INFO:root:[Alford] : [FLOOD] Sent location from Alford to Parker.
+INFO:root:[Alford] : [FLOOD] Sent location from Alford to Powell.
+INFO:root:[Alford] : [CONNECTION] Connection closed, total: 2.
+INFO:root:[Alford] : [REQUEST] Recieved: AT Alford 47961701.8664 anqi.seas.ucla.edu +35.068930-118.445127 1400994645.39.
+INFO:root:[Alford] : [AT] Existing client with fresher time: anqi.seas.ucla.edu.
+INFO:root:[Alford] : [CONNECTION] Connection closed, total: 1.
+INFO:root:[Alford] : [CONNECTION] Connection closed, total: 0.
+INFO:root:[Alford] : SERVER Alford with PORT 12550 stopped.

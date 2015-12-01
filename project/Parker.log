@@ -1,0 +1,152 @@
+INFO:root:[Parker] : SERVER Parker started at PORT 12553.
+INFO:root:[Parker] : [CONNECTION] Connection established, total: 1.
+INFO:root:[Parker] : [REQUEST] Recieved: AT Bolden 48161696.8608 qingwei.seas.ucla.edu +34.068930-118.445127 1400794645.39.
+INFO:root:[Parker] : [AT] New client: qingwei.seas.ucla.edu.
+INFO:root:[Parker] : [FLOOD] Sent location from Parker to Alford.
+INFO:root:[Parker] : [FLOOD] Sent location from Parker to Bolden.
+INFO:root:[Parker] : [FLOOD] Sent location from Parker to Hamilton.
+INFO:root:[Parker] : [CONNECTION] Connection closed, total: 0.
+INFO:root:[Parker] : [CONNECTION] Connection established, total: 1.
+INFO:root:[Parker] : [CONNECTION] Connection established, total: 2.
+INFO:root:[Parker] : [CONNECTION] Connection established, total: 3.
+INFO:root:[Parker] : [REQUEST] Recieved: AT Bolden 48161696.8608 qingwei.seas.ucla.edu +34.068930-118.445127 1400794645.39.
+INFO:root:[Parker] : [AT] Existing client with fresher time: qingwei.seas.ucla.edu.
+INFO:root:[Parker] : [CONNECTION] Connection closed, total: 2.
+INFO:root:[Parker] : [REQUEST] Recieved: AT Bolden 48161696.8608 qingwei.seas.ucla.edu +34.068930-118.445127 1400794645.39.
+INFO:root:[Parker] : [AT] Existing client with fresher time: qingwei.seas.ucla.edu.
+INFO:root:[Parker] : [REQUEST] Recieved: AT Bolden 48161696.8608 qingwei.seas.ucla.edu +34.068930-118.445127 1400794645.39.
+INFO:root:[Parker] : [AT] Existing client with fresher time: qingwei.seas.ucla.edu.
+INFO:root:[Parker] : [CONNECTION] Connection closed, total: 1.
+INFO:root:[Parker] : [CONNECTION] Connection closed, total: 0.
+INFO:root:[Parker] : [CONNECTION] Connection established, total: 1.
+INFO:root:[Parker] : [REQUEST] Recieved: AT Alford 47961701.8664 anqi.seas.ucla.edu +35.068930-118.445127 1400994645.39.
+INFO:root:[Parker] : [AT] New client: anqi.seas.ucla.edu.
+INFO:root:[Parker] : [FLOOD] Sent location from Parker to Alford.
+INFO:root:[Parker] : [FLOOD] Sent location from Parker to Bolden.
+INFO:root:[Parker] : [FLOOD] Sent location from Parker to Hamilton.
+INFO:root:[Parker] : [CONNECTION] Connection closed, total: 0.
+INFO:root:[Parker] : [CONNECTION] Connection established, total: 1.
+INFO:root:[Parker] : [CONNECTION] Connection established, total: 2.
+INFO:root:[Parker] : [CONNECTION] Connection established, total: 3.
+INFO:root:[Parker] : [REQUEST] Recieved: AT Alford 47961701.8664 anqi.seas.ucla.edu +35.068930-118.445127 1400994645.39.
+INFO:root:[Parker] : [AT] Existing client with fresher time: anqi.seas.ucla.edu.
+INFO:root:[Parker] : [REQUEST] Recieved: AT Alford 47961701.8664 anqi.seas.ucla.edu +35.068930-118.445127 1400994645.39.
+INFO:root:[Parker] : [AT] Existing client with fresher time: anqi.seas.ucla.edu.
+INFO:root:[Parker] : [CONNECTION] Connection closed, total: 2.
+INFO:root:[Parker] : [CONNECTION] Connection closed, total: 1.
+INFO:root:[Parker] : [REQUEST] Recieved: AT Alford 47961701.8664 anqi.seas.ucla.edu +35.068930-118.445127 1400994645.39.
+INFO:root:[Parker] : [AT] Existing client with fresher time: anqi.seas.ucla.edu.
+INFO:root:[Parker] : [CONNECTION] Connection closed, total: 0.
+INFO:root:[Parker] : [CONNECTION] Connection established, total: 1.
+INFO:root:[Parker] : [REQUEST] Recieved: AT Hamilton 47961707.8996 qingweipeterlan.seas.ucla.edu +31.068930-118.445127 1400994645.39.
+INFO:root:[Parker] : [AT] New client: qingweipeterlan.seas.ucla.edu.
+INFO:root:[Parker] : [FLOOD] Sent location from Parker to Alford.
+INFO:root:[Parker] : [FLOOD] Sent location from Parker to Bolden.
+INFO:root:[Parker] : [FLOOD] Sent location from Parker to Hamilton.
+INFO:root:[Parker] : [CONNECTION] Connection closed, total: 0.
+INFO:root:[Parker] : [CONNECTION] Connection established, total: 1.
+INFO:root:[Parker] : [REQUEST] Recieved: AT Hamilton 47961707.8996 qingweipeterlan.seas.ucla.edu +31.068930-118.445127 1400994645.39.
+INFO:root:[Parker] : [AT] Existing client with fresher time: qingweipeterlan.seas.ucla.edu.
+INFO:root:[Parker] : [CONNECTION] Connection closed, total: 0.
+INFO:root:[Parker] : [CONNECTION] Connection established, total: 1.
+INFO:root:[Parker] : [REQUEST] Recieved: AT Hamilton 47961707.8996 qingweipeterlan.seas.ucla.edu +31.068930-118.445127 1400994645.39.
+INFO:root:[Parker] : [AT] Existing client with fresher time: qingweipeterlan.seas.ucla.edu.
+INFO:root:[Parker] : [CONNECTION] Connection closed, total: 0.
+INFO:root:[Parker] : [CONNECTION] Connection established, total: 1.
+INFO:root:[Parker] : [REQUEST] Recieved: WHATSAT qingweipeterlan.seas.ucla.edu 20 5.
+INFO:root:[Parker] : [WHATSAT] Found entry: AT Hamilton 47961707.8996 qingweipeterlan.seas.ucla.edu +31.068930-118.445127 1400994645.39.
+INFO:root:[Parker] : [WHATSAT] API request created: https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=+31.068930,-118.445127&radius=20&sensor=false&key=AIzaSyDsr8DYXDNDY2y0nh2fM93DEYkkGUxYUEk.
+INFO:root:[Parker] : [API] Google API response: {
+    "status": "ZERO_RESULTS", 
+    "html_attributions": [], 
+    "results": []
+}.
+INFO:root:[Parker] : [REQUEST] Recieved: WHATSAT qingwei.seas.ucla.edu 20 5.
+INFO:root:[Parker] : [WHATSAT] Found entry: AT Bolden 48161696.8608 qingwei.seas.ucla.edu +34.068930-118.445127 1400794645.39.
+INFO:root:[Parker] : [WHATSAT] API request created: https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=+34.068930,-118.445127&radius=20&sensor=false&key=AIzaSyDsr8DYXDNDY2y0nh2fM93DEYkkGUxYUEk.
+INFO:root:[Parker] : [API] Google API response: {
+    "status": "OK", 
+    "html_attributions": [], 
+    "results": [
+        {
+            "name": "Westwood Plaza", 
+            "reference": "CpQBiAAAAOiCXnoLr3ox-_q4fubOEtTJ20dnmybTzSsXa_frp9q5a1wFQ608xLIdMmKTyj3gOOg9gPbrXG9a6tqIlCaLNzTBRTUwfVYA-im47il4l9t2t79Rqsx1sWF4Qb7NrI5au8hh9deQBmCjKFdx1pjij5m0HwA0wAma50QtsB8mLfv2cC5uB-DpMfbyl_XXlnkdeRIQWQsuZ2i7p8kEUNUt1kWxnBoUefFmSkWhb9yNta5khh1mP7VdvI4", 
+            "geometry": {
+                "location": {
+                    "lat": 34.0689117, 
+                    "lng": -118.4449861
+                }
+            }, 
+            "place_id": "ChIJu_H-qIi8woAReK5_EvNMbD8", 
+            "vicinity": "Los Angeles", 
+            "scope": "GOOGLE", 
+            "id": "2f309b941cb2943dc56af3e42b9a3a1ccac412ed", 
+            "types": [
+                "route"
+            ], 
+            "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/geocode-71.png"
+        }, 
+        {
+            "rating": 4.5, 
+            "name": "University of California, Los Angeles", 
+            "reference": "CoQBeAAAALlFMbpdykoZWlHouq_7z1Yh0nHiF-Vx2XG4QbNfi-WvYyJ7JKII88MrvIure8OpfZlJuEcBsJANvZ-GLTyht3xBOpj12nM_GmDgasIuRv6UZcSUg9qKmlpfRrRtqt_d2FxZaWy301X0pkcNY3iJFk55wD0DiwCIZsTIMQZRjyPFEhB1VIKJoOdh9ffvNEf_nsOHGhTixaSgvIcoOBbKCsY4o7T1ebHwYQ", 
+            "geometry": {
+                "location": {
+                    "lat": 34.068921, 
+                    "lng": -118.4451811
+                }
+            }, 
+            "place_id": "ChIJZQ9c8IW8woARN0gTXFiTqSU", 
+            "vicinity": "Los Angeles", 
+            "photos": [
+                {
+                    "photo_reference": "CmRdAAAA88j0rtYFkQG-PhT5uVEPzZ_ZwsKcIrtDavLZNMZkIhkiToKP0c4iAYMLJYBw-yGLqoVSD6FNe5t_DbwP77f7dgL_iXpw_x1cbcgZBt13auXLlATbYqONlWZxRosaJoP8EhDt_kBmV084fDIkIVs_KHDqGhTgTZS_s9eS_VPHxg5JqJLt0LZLkQ", 
+                    "width": 1600, 
+                    "html_attributions": [
+                        "<a href=\"https://maps.google.com/maps/contrib/103897750204168709204\">Ufuk KILI\u00c7</a>"
+                    ], 
+                    "height": 1200
+                }
+            ], 
+            "scope": "GOOGLE", 
+            "id": "4d56f16ad3d8976d49143fa4fdfffbc0a7ce8e39", 
+            "types": [
+                "university", 
+                "point_of_interest", 
+                "establishment"
+            ], 
+            "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/school-71.png"
+        }, 
+        {
+            "name": "Westwood", 
+            "reference": "CoQBewAAAAHy2ibqclYX-YGe76puy9pF0Nbb-lX4PU1oBgvOIFMyVbh6P12JKlOeUfsb-8mAae18QDXZECkGLpYC5fl3n9-RJzftiH-0HS5le_n5oKZSQgLqLz1SZ0YEyirAVDmmqinHeyptt09AjMXKHuwq7d6gK0H0PJ8GOqmJ5TYKSQUUEhCdO6nVsYnvsM2_4yQlUvAtGhRH4I-jiYztE71wWVZrpHSRbRIPtA", 
+            "geometry": {
+                "location": {
+                    "lat": 34.0635016, 
+                    "lng": -118.4455164
+                }, 
+                "viewport": {
+                    "northeast": {
+                        "lat": 34.0827807, 
+                        "lng": -118.4141518
+                    }, 
+                    "southwest": {
+                        "lat": 34.0470589, 
+                        "lng": -118.4665319
+                    }
+                }
+            }, 
+            "place_id": "ChIJecf92oa8woARVlNT9X_x42M", 
+            "vicinity": "Los Angeles", 
+            "scope": "GOOGLE", 
+            "id": "87ef87c6cb98059f72b40a917e6e9c8c80e5d8b3", 
+            "types": [
+                "neighborhood", 
+                "political"
+            ], 
+            "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/geocode-71.png"
+        }
+    ]
+}.
+INFO:root:[Parker] : [CONNECTION] Connection closed, total: 0.
+INFO:root:[Parker] : SERVER Parker with PORT 12553 stopped.
