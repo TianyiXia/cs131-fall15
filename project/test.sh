@@ -27,9 +27,6 @@ pkill -f 'python chat.py Alford'
 	sleep 2
 } | telnet lnxsrv.seas.ucla.edu 12554 # Powell
 
-# startup Alford
-python chat.py Alford
-
 {
 	sleep 1
 	echo IAMAT qingweipeterlan.seas.ucla.edu +31.068930-118.445127 1400994645.392014450
@@ -46,8 +43,8 @@ pkill -f 'python chat.py Hamilton'
 	echo WHATSAT qingweipeterlan.seas.ucla.edu 20 5
 	sleep 1
 	echo WHATSAT qingwei.seas.ucla.edu 20 5
-	sleep1
-} | telnet lnxsrv.seas.ucla.edu 12550 # Alford
+	sleep 1
+} | telnet lnxsrv.seas.ucla.edu 12553 # Parker
 
 # kill all servers
 ./kill.sh
