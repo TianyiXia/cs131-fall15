@@ -94,7 +94,7 @@ class ProxyHerdProtocol(LineReceiver):
 			self.report("[IAMAT] New client: {0}".format(clientID))
 			self.factory.users[clientID] = {"msg" : response, "time" : clientTime}
 			# flood
-			self.propagateLocations(response)
+			self.propagateLocations(response, self.factory.serverName)
 		else:
 			if self.factory.users[clientID]['time'] > clientTime:
 				self.report("[IAMAT] Existing client with fresher time: {0}".format(clientID))
@@ -102,7 +102,7 @@ class ProxyHerdProtocol(LineReceiver):
 			else:
 				self.report("[IAMAT] Existing client updated: {0}".format(clientID))
 				self.factory.users[clientID] = {"msg" : response, "time" : clientTime}
-				self.propagateLocations(response)
+				self.propagateLocations(response, self.factory.serverName)
 		return
 
 	def respondAT(self, line):
@@ -126,7 +126,7 @@ class ProxyHerdProtocol(LineReceiver):
 			self.report("[AT] New client: {0}".format(clientID))
 
 		self.factory.users[clientID] = {"msg" : line, "time" : clientTime}
-		self.propagateLocations(line)
+		self.propagateLocations(line, self.factory.serverName)
 		return
 
 	def respondWHATSAT(self, line):
@@ -139,6 +139,11 @@ class ProxyHerdProtocol(LineReceiver):
 
 		# bind arguments
 		_, clientID, clientRadius, clientLimit = args
+
+		# check if clientID exists
+		if clientID not in self.factory.users:
+			self.report("[WHATSAT] ClientID: {0} does not exist".format(clientID))
+			return
 
 		response = self.factory.users[clientID]["msg"]
 		self.report("[WHATSAT] Found entry: {0}".format(response))
@@ -162,10 +167,11 @@ class ProxyHerdProtocol(LineReceiver):
 		invalidLine = "? {0}\n".format(line)
 		return invalidLine
 
-	def propagateLocations(self, response):
+	def propagateLocations(self, response, sender):
 		for name in neighbors[self.factory.serverName]:
-			reactor.connectTCP('localhost', ports[name], ProxyHerdClient(response))
-			self.report("[FLOOD] Sent location from {0} to {1}".format(self.factory.serverName, name))
+			if name != sender:
+				reactor.connectTCP('localhost', ports[name], ProxyHerdClient(response))
+				self.report("[FLOOD] Sent location from {0} to {1}".format(self.factory.serverName, name))
 		return
 
 	def printLocations(self, response, clientLimit, clientID):
