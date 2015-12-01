@@ -42,7 +42,7 @@ class ProxyHerdProtocol(LineReceiver):
 
 	def connectionMade(self):
 		self.factory.numClients += 1
-		log = "[CONNECTION] New connection, total: {0}".format(self.factory.numClients)
+		log = "[CONNECTION] Connection established, total: {0}".format(self.factory.numClients)
 		self.report(log)
 
 	def connectionLost(self, reasonLost):
@@ -83,9 +83,9 @@ class ProxyHerdProtocol(LineReceiver):
 		timeString = ""
 
 		if timeDiff > 0:
-			timeString = "+" + repr(timeDiff)
+			timeString = "+{0}".format(repr(timeDiff))
 		else:
-			timeString = "-" + repr(timeDiff)
+			timeString = "-{0}".format(repr(timeDiff))
 
 		response = "AT {0} {1} {2} {3} {4}".format(self.factory.serverName, timeDiff, clientID, clientCoord, clientTime)
 		self.transport.write(response + "\n")
@@ -117,13 +117,13 @@ class ProxyHerdProtocol(LineReceiver):
 		_, serverName, timeDiff, clientID, clientCoord, clientTime = args
 
 		if clientID in self.factory.users and clientTime <= self.factory.users[clientID]["time"]:
-			self.report("[AT] Existing client with fresher time: {0}".format(serverName))
+			self.report("[AT] Existing client with fresher time: {0}".format(clientID))
 			return
 
 		if clientID in self.factory.users:
 			self.report("[AT] Existing client updated: {0}".format(clientID))
 		else:
-			self.report("New client [IAMAT]: {0}".format(clientID))
+			self.report("[AT] New client: {0}".format(clientID))
 
 		self.factory.users[clientID] = {"msg" : line, "time" : clientTime}
 		self.propagateLocations(line)
@@ -193,7 +193,7 @@ class ProxyHerdServer(protocol.ServerFactory):
 		return ProxyHerdProtocol(self)
 
 	def stopFactory(self):
-		log = "[{0}] : SERVER {0} with PORT {1} stopped.".format(self.serverName, self.serverName, self.portNumber)
+		log = "[{0}] : SERVER {1} with PORT {2} stopped.".format(self.serverName, self.serverName, self.portNumber)
 		logging.info(log)
 
 
