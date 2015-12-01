@@ -10,7 +10,6 @@ import datetime
 from twisted.internet import reactor, protocol
 from twisted.protocols.basic import LineReceiver
 from twisted.web.client import getPage
-from twisted.application import service, internet
 
 apikey = "AIzaSyDsr8DYXDNDY2y0nh2fM93DEYkkGUxYUEk"
 apiurl = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?"
