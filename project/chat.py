@@ -142,7 +142,7 @@ class ProxyHerdProtocol(LineReceiver):
 
 		# check if clientID exists
 		if clientID not in self.factory.users:
-			self.report("[WHATSAT] ClientID: {0} does not exist".format(clientID))
+			self.report("[WHATSAT] clientID '{0}' does not exist".format(clientID))
 			return
 
 		response = self.factory.users[clientID]["msg"]
@@ -169,9 +169,8 @@ class ProxyHerdProtocol(LineReceiver):
 
 	def propagateLocations(self, response, sender):
 		for name in neighbors[self.factory.serverName]:
-			if name != sender:
-				reactor.connectTCP('localhost', ports[name], ProxyHerdClient(response))
-				self.report("[FLOOD] Sent location from {0} to {1}".format(self.factory.serverName, name))
+			reactor.connectTCP('localhost', ports[name], ProxyHerdClient(response))
+			self.report("[FLOOD] Sent location from {0} to {1}".format(self.factory.serverName, name))
 		return
 
 	def printLocations(self, response, clientLimit, clientID):
