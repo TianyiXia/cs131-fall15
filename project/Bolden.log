@@ -1,0 +1,125 @@
+INFO:root:[Bolden] : SERVER Bolden started at PORT 12551.
+INFO:root:[Bolden] : [CONNECTION] Connection established, total: 1.
+INFO:root:[Bolden] : [REQUEST] Recieved: IAMAT qingwei.seas.ucla.edu +34.068930-118.445127 1400794645.392014450.
+INFO:root:[Bolden] : [IAMAT] New client: qingwei.seas.ucla.edu.
+INFO:root:[Bolden] : [FLOOD] Sent location from Bolden to Parker.
+INFO:root:[Bolden] : [FLOOD] Sent location from Bolden to Powell.
+INFO:root:[Bolden] : [CONNECTION] Connection established, total: 2.
+INFO:root:[Bolden] : [REQUEST] Recieved: AT Bolden 48161696.8608 qingwei.seas.ucla.edu +34.068930-118.445127 1400794645.39.
+INFO:root:[Bolden] : [AT] Existing client updated: qingwei.seas.ucla.edu.
+INFO:root:[Bolden] : [FLOOD] Sent location from Bolden to Parker.
+INFO:root:[Bolden] : [FLOOD] Sent location from Bolden to Powell.
+INFO:root:[Bolden] : [CONNECTION] Connection closed, total: 1.
+INFO:root:[Bolden] : [CONNECTION] Connection established, total: 2.
+INFO:root:[Bolden] : [REQUEST] Recieved: AT Bolden 48161696.8608 qingwei.seas.ucla.edu +34.068930-118.445127 1400794645.39.
+INFO:root:[Bolden] : [AT] Existing client with fresher time: qingwei.seas.ucla.edu.
+INFO:root:[Bolden] : [CONNECTION] Connection closed, total: 1.
+INFO:root:[Bolden] : [REQUEST] Recieved: WHATSAT qingwei.seas.ucla.edu 10 6.
+INFO:root:[Bolden] : [WHATSAT] Found entry: AT Bolden 48161696.8608 qingwei.seas.ucla.edu +34.068930-118.445127 1400794645.39.
+INFO:root:[Bolden] : [WHATSAT] API request created: https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=+34.068930,-118.445127&radius=10&sensor=false&key=AIzaSyDsr8DYXDNDY2y0nh2fM93DEYkkGUxYUEk.
+INFO:root:[Bolden] : [API] Google API response: {
+    "status": "OK", 
+    "html_attributions": [], 
+    "results": [
+        {
+            "name": "Westwood Plaza", 
+            "reference": "CpQBiAAAAFKS3Snr8ExZSVsO1UuNTlFHv0sxaDVa_8slPdUWvd2Dt3m-WXC8i38nNIG7UbH3tIj6JaQQRuVjxTZ-j620b6udx8qwJqkPjJdnxIBB9ZE7SCSA21MzrkeXS7OtTbApShGhBYgtTVi0nmhRTyM5YqcapM9hNz5q7tgLjJw8RrTIjBpkZzrVedsdqKjKSxrcjRIQrmd5ypzX42Pbm3t0KU3n4BoUmoZa_k_jrou8mzYueauSm3I7IKw", 
+            "geometry": {
+                "location": {
+                    "lat": 34.0689117, 
+                    "lng": -118.4449861
+                }
+            }, 
+            "place_id": "ChIJu_H-qIi8woAReK5_EvNMbD8", 
+            "vicinity": "Los Angeles", 
+            "scope": "GOOGLE", 
+            "id": "2f309b941cb2943dc56af3e42b9a3a1ccac412ed", 
+            "types": [
+                "route"
+            ], 
+            "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/geocode-71.png"
+        }, 
+        {
+            "rating": 4.5, 
+            "name": "University of California, Los Angeles", 
+            "reference": "CoQBeAAAACqIY8QORjWFnqj2-Gq4G3DuSuxRvd9Us4b17-ap4bzGaJ1SXlXByw2wP5YoSEf7o9VdmJh30vQNhc74g1PNFsQcWe9KLPRJelpzZ40afdrPHt712nZqmSRSy2uM5Hrf3FI5s73eGJuVOloVplGHmgt9jLgLq4Y5fwZhRQkyNeHCEhAy43dTaQER0C3OVeMAIaE5GhSZS-vo0wrRfA9z-t1DnoOeybVk8g", 
+            "geometry": {
+                "location": {
+                    "lat": 34.068921, 
+                    "lng": -118.4451811
+                }
+            }, 
+            "place_id": "ChIJZQ9c8IW8woARN0gTXFiTqSU", 
+            "vicinity": "Los Angeles", 
+            "photos": [
+                {
+                    "photo_reference": "CmRdAAAA62TPR61nTEDOJbEasR-tGjXL_FG26TKZHAZnBoIYS31sZLbqO4-8juJgdM1rJ53vkLwUcNqWO-NsttlGhoRQnpG_pm6tM3o0TJX6k5lI0T-RRPeczxGfJ5KkguZuc8lKEhD9MORWpbodjUUHTUKjXIQ_GhTzX9C7jfMYv30PA8zwdqScWnOVGA", 
+                    "width": 1600, 
+                    "html_attributions": [
+                        "<a href=\"https://maps.google.com/maps/contrib/103897750204168709204\">Ufuk KILI\u00c7</a>"
+                    ], 
+                    "height": 1200
+                }
+            ], 
+            "scope": "GOOGLE", 
+            "id": "4d56f16ad3d8976d49143fa4fdfffbc0a7ce8e39", 
+            "types": [
+                "university", 
+                "point_of_interest", 
+                "establishment"
+            ], 
+            "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/school-71.png"
+        }, 
+        {
+            "name": "Westwood", 
+            "reference": "CoQBewAAAPf-hJkYDjU2S1kol6kXM_RLex3T4s0u0iaMlgv9-Xg51WIiydZ2tS8T4USEgqdIcPutCAdixx-tCIzwjXT8ZairrNtt9syRq5d5NMb5-gYoHgDyxbOreEB8mrcsyE38_4aNhI01N6rRVCHCCjBm3haLBNn10UWIg-nfxlWKCfqlEhBoomh6V_7_3Z1WFxl-kpbRGhTNRlWXcsdoLAQV4QQt3gJAIdCRZQ", 
+            "geometry": {
+                "location": {
+                    "lat": 34.0635016, 
+                    "lng": -118.4455164
+                }, 
+                "viewport": {
+                    "northeast": {
+                        "lat": 34.0827807, 
+                        "lng": -118.4141518
+                    }, 
+                    "southwest": {
+                        "lat": 34.0470589, 
+                        "lng": -118.4665319
+                    }
+                }
+            }, 
+            "place_id": "ChIJecf92oa8woARVlNT9X_x42M", 
+            "vicinity": "Los Angeles", 
+            "scope": "GOOGLE", 
+            "id": "87ef87c6cb98059f72b40a917e6e9c8c80e5d8b3", 
+            "types": [
+                "neighborhood", 
+                "political"
+            ], 
+            "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/geocode-71.png"
+        }
+    ]
+}.
+INFO:root:[Bolden] : [CONNECTION] Connection closed, total: 0.
+INFO:root:[Bolden] : [CONNECTION] Connection established, total: 1.
+INFO:root:[Bolden] : [CONNECTION] Connection established, total: 2.
+INFO:root:[Bolden] : [REQUEST] Recieved: AT Alford 47961701.8664 anqi.seas.ucla.edu +35.068930-118.445127 1400994645.39.
+INFO:root:[Bolden] : [AT] New client: anqi.seas.ucla.edu.
+INFO:root:[Bolden] : [FLOOD] Sent location from Bolden to Parker.
+INFO:root:[Bolden] : [FLOOD] Sent location from Bolden to Powell.
+INFO:root:[Bolden] : [CONNECTION] Connection closed, total: 1.
+INFO:root:[Bolden] : [REQUEST] Recieved: AT Alford 47961701.8664 anqi.seas.ucla.edu +35.068930-118.445127 1400994645.39.
+INFO:root:[Bolden] : [AT] Existing client with fresher time: anqi.seas.ucla.edu.
+INFO:root:[Bolden] : [CONNECTION] Connection closed, total: 0.
+INFO:root:[Bolden] : [CONNECTION] Connection established, total: 1.
+INFO:root:[Bolden] : [REQUEST] Recieved: AT Hamilton 47961707.8996 qingweipeterlan.seas.ucla.edu +31.068930-118.445127 1400994645.39.
+INFO:root:[Bolden] : [AT] New client: qingweipeterlan.seas.ucla.edu.
+INFO:root:[Bolden] : [FLOOD] Sent location from Bolden to Parker.
+INFO:root:[Bolden] : [FLOOD] Sent location from Bolden to Powell.
+INFO:root:[Bolden] : [CONNECTION] Connection closed, total: 0.
+INFO:root:[Bolden] : [CONNECTION] Connection established, total: 1.
+INFO:root:[Bolden] : [REQUEST] Recieved: AT Hamilton 47961707.8996 qingweipeterlan.seas.ucla.edu +31.068930-118.445127 1400994645.39.
+INFO:root:[Bolden] : [AT] Existing client with fresher time: qingweipeterlan.seas.ucla.edu.
+INFO:root:[Bolden] : [CONNECTION] Connection closed, total: 0.
+INFO:root:[Bolden] : SERVER Bolden with PORT 12551 stopped.
