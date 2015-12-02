@@ -1,0 +1,109 @@
+INFO:root:[Hamilton] : SERVER Hamilton started at PORT 12552.
+INFO:root:[Hamilton] : [CONNECTION] Connection established, total: 1.
+INFO:root:[Hamilton] : [REQUEST] Recieved: AT Bolden 48161696.8608 qingwei.seas.ucla.edu +34.068930-118.445127 1400794645.39.
+INFO:root:[Hamilton] : [AT] New client: qingwei.seas.ucla.edu.
+INFO:root:[Hamilton] : [FLOOD] Sent location from Hamilton to Parker.
+INFO:root:[Hamilton] : [CONNECTION] Connection closed, total: 0.
+INFO:root:[Hamilton] : [CONNECTION] Connection established, total: 1.
+INFO:root:[Hamilton] : [REQUEST] Recieved: AT Alford 47961701.8664 anqi.seas.ucla.edu +35.068930-118.445127 1400994645.39.
+INFO:root:[Hamilton] : [AT] New client: anqi.seas.ucla.edu.
+INFO:root:[Hamilton] : [FLOOD] Sent location from Hamilton to Parker.
+INFO:root:[Hamilton] : [CONNECTION] Connection closed, total: 0.
+INFO:root:[Hamilton] : [CONNECTION] Connection established, total: 1.
+INFO:root:[Hamilton] : [REQUEST] Recieved: IAMAT qingweipeterlan.seas.ucla.edu +31.068930-118.445127 1400994645.392014450.
+INFO:root:[Hamilton] : [IAMAT] New client: qingweipeterlan.seas.ucla.edu.
+INFO:root:[Hamilton] : [FLOOD] Sent location from Hamilton to Parker.
+INFO:root:[Hamilton] : [CONNECTION] Connection established, total: 2.
+INFO:root:[Hamilton] : [REQUEST] Recieved: AT Hamilton 47961707.8996 qingweipeterlan.seas.ucla.edu +31.068930-118.445127 1400994645.39.
+INFO:root:[Hamilton] : [AT] Existing client updated: qingweipeterlan.seas.ucla.edu.
+INFO:root:[Hamilton] : [FLOOD] Sent location from Hamilton to Parker.
+INFO:root:[Hamilton] : [CONNECTION] Connection closed, total: 1.
+INFO:root:[Hamilton] : [REQUEST] Recieved: WHATSAT qingwei.seas.ucla.edu 20 5.
+INFO:root:[Hamilton] : [WHATSAT] Found entry: AT Bolden 48161696.8608 qingwei.seas.ucla.edu +34.068930-118.445127 1400794645.39.
+INFO:root:[Hamilton] : [WHATSAT] API request created: https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=+34.068930,-118.445127&radius=20&sensor=false&key=AIzaSyDsr8DYXDNDY2y0nh2fM93DEYkkGUxYUEk.
+INFO:root:[Hamilton] : [API] Google API response: {
+    "status": "OK", 
+    "html_attributions": [], 
+    "results": [
+        {
+            "name": "Westwood Plaza", 
+            "reference": "CpQBiAAAAFcL6zqkS-fQJjJ1-tOJJgk2GDOSXF5prJ3rO65EECuwrGACRjzwsoMEhT9zuGhJ9lu6fKDsUUO5gooFDab0FACsQtk_CSkpTBxPztZIryvjt9f-WScp2fg3u7PRi8oqsMJGlqZ-THdW0Xr4bYguerkU8XxO-amLQyW1WY1nmE7Lrd-IGGufaEuJjmbT8cFmwxIQw3QpW54N3O9rA3eRwPG41xoUuVOFhd5WiKxaezM5wLL7z7wgcvo", 
+            "geometry": {
+                "location": {
+                    "lat": 34.0689117, 
+                    "lng": -118.4449861
+                }
+            }, 
+            "place_id": "ChIJu_H-qIi8woAReK5_EvNMbD8", 
+            "vicinity": "Los Angeles", 
+            "scope": "GOOGLE", 
+            "id": "2f309b941cb2943dc56af3e42b9a3a1ccac412ed", 
+            "types": [
+                "route"
+            ], 
+            "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/geocode-71.png"
+        }, 
+        {
+            "rating": 4.5, 
+            "name": "University of California, Los Angeles", 
+            "reference": "CoQBeAAAAA7oebtf4DHlsjVePTmSYt1XI6id_411BmmH5zuChM520au_CVExaIFLtrXrbFzPTuSx8SnRW0cI8ciTnOrYS6156CEDwtp6yKYOHVM2OacsNulityyynuoVN5jUpLWjY8IVReS9fgm1EFwekhfnM-b3KEN_cVvJ0LzFY9DHfPe2EhDFHFvUah5X20NI6d_ZcnsHGhTtrM4fag-CTF2ch2Xi3XUAIhNF7A", 
+            "geometry": {
+                "location": {
+                    "lat": 34.068921, 
+                    "lng": -118.4451811
+                }
+            }, 
+            "place_id": "ChIJZQ9c8IW8woARN0gTXFiTqSU", 
+            "vicinity": "Los Angeles", 
+            "photos": [
+                {
+                    "photo_reference": "CmRdAAAAavQ0V7cjDwua_L6PhoP_7LTNe3ztyfdKhwz-4iL16edcaDgMHWT32NJnDCod422fTsR3avspiqqTAKxhcxyPMeA4eC2XNjeOLi-WJbW_nZYHDlY30lTwBFNNzSMkkwI1EhDWIeupasZ_rt284Q8vMW0GGhR40QG-6-GU-EN57x3SjqBVBO6-VQ", 
+                    "width": 1600, 
+                    "html_attributions": [
+                        "<a href=\"https://maps.google.com/maps/contrib/103897750204168709204\">Ufuk KILI\u00c7</a>"
+                    ], 
+                    "height": 1200
+                }
+            ], 
+            "scope": "GOOGLE", 
+            "id": "4d56f16ad3d8976d49143fa4fdfffbc0a7ce8e39", 
+            "types": [
+                "university", 
+                "point_of_interest", 
+                "establishment"
+            ], 
+            "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/school-71.png"
+        }, 
+        {
+            "name": "Westwood", 
+            "reference": "CoQBewAAAOG8E9pMUXk0UD9ddDPjLGMyJWOEsniXSUDrOQF1honjP0z9-kq-QgnB-tr0zYxhvo-NrgYGA4lDsmIdw8ZKHGgpysIWTzscHjOupATNOsjCBYdD6-7lHZoFD2xVxM1TsczDo8CP9I6mR8DK0ggdCSH7dlK7ExMW1pbnNwRiyedQEhB8tFqdYSAiKWqpeXA1wHGvGhSm6j9LHB1bBm7PGP9himPGE40L6w", 
+            "geometry": {
+                "location": {
+                    "lat": 34.0635016, 
+                    "lng": -118.4455164
+                }, 
+                "viewport": {
+                    "northeast": {
+                        "lat": 34.0827807, 
+                        "lng": -118.4141518
+                    }, 
+                    "southwest": {
+                        "lat": 34.0470589, 
+                        "lng": -118.4665319
+                    }
+                }
+            }, 
+            "place_id": "ChIJecf92oa8woARVlNT9X_x42M", 
+            "vicinity": "Los Angeles", 
+            "scope": "GOOGLE", 
+            "id": "87ef87c6cb98059f72b40a917e6e9c8c80e5d8b3", 
+            "types": [
+                "neighborhood", 
+                "political"
+            ], 
+            "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/geocode-71.png"
+        }
+    ]
+}.
+INFO:root:[Hamilton] : [CONNECTION] Connection closed, total: 0.
+INFO:root:[Hamilton] : SERVER Hamilton with PORT 12552 stopped.

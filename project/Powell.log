@@ -1,0 +1,127 @@
+INFO:root:[Powell] : SERVER Powell started at PORT 12554.
+INFO:root:[Powell] : [CONNECTION] Connection established, total: 1.
+INFO:root:[Powell] : [REQUEST] Recieved: AT Bolden 48161696.8608 qingwei.seas.ucla.edu +34.068930-118.445127 1400794645.39.
+INFO:root:[Powell] : [AT] New client: qingwei.seas.ucla.edu.
+INFO:root:[Powell] : [FLOOD] Sent location from Powell to Alford.
+INFO:root:[Powell] : [FLOOD] Sent location from Powell to Bolden.
+INFO:root:[Powell] : [CONNECTION] Connection closed, total: 0.
+INFO:root:[Powell] : [CONNECTION] Connection established, total: 1.
+INFO:root:[Powell] : [CONNECTION] Connection established, total: 2.
+INFO:root:[Powell] : [REQUEST] Recieved: AT Bolden 48161696.8608 qingwei.seas.ucla.edu +34.068930-118.445127 1400794645.39.
+INFO:root:[Powell] : [AT] Existing client with fresher time: qingwei.seas.ucla.edu.
+INFO:root:[Powell] : [CONNECTION] Connection closed, total: 1.
+INFO:root:[Powell] : [REQUEST] Recieved: AT Bolden 48161696.8608 qingwei.seas.ucla.edu +34.068930-118.445127 1400794645.39.
+INFO:root:[Powell] : [AT] Existing client with fresher time: qingwei.seas.ucla.edu.
+INFO:root:[Powell] : [CONNECTION] Connection closed, total: 0.
+INFO:root:[Powell] : [CONNECTION] Connection established, total: 1.
+INFO:root:[Powell] : [REQUEST] Recieved: AT Alford 47961701.8664 anqi.seas.ucla.edu +35.068930-118.445127 1400994645.39.
+INFO:root:[Powell] : [AT] New client: anqi.seas.ucla.edu.
+INFO:root:[Powell] : [FLOOD] Sent location from Powell to Alford.
+INFO:root:[Powell] : [FLOOD] Sent location from Powell to Bolden.
+INFO:root:[Powell] : [CONNECTION] Connection closed, total: 0.
+INFO:root:[Powell] : [CONNECTION] Connection established, total: 1.
+INFO:root:[Powell] : [CONNECTION] Connection established, total: 2.
+INFO:root:[Powell] : [REQUEST] Recieved: AT Alford 47961701.8664 anqi.seas.ucla.edu +35.068930-118.445127 1400994645.39.
+INFO:root:[Powell] : [AT] Existing client with fresher time: anqi.seas.ucla.edu.
+INFO:root:[Powell] : [CONNECTION] Connection closed, total: 1.
+INFO:root:[Powell] : [REQUEST] Recieved: AT Alford 47961701.8664 anqi.seas.ucla.edu +35.068930-118.445127 1400994645.39.
+INFO:root:[Powell] : [AT] Existing client with fresher time: anqi.seas.ucla.edu.
+INFO:root:[Powell] : [CONNECTION] Connection closed, total: 0.
+INFO:root:[Powell] : [CONNECTION] Connection established, total: 1.
+INFO:root:[Powell] : [REQUEST] Recieved: WHATSAT qingweilan.seas.ucla.edu 10 6.
+INFO:root:[Powell] : [WHATSAT] clientID 'qingweilan.seas.ucla.edu' does not exist.
+INFO:root:[Powell] : [REQUEST] Recieved: WHATSAT qingwei.seas.ucla.edu 20 5.
+INFO:root:[Powell] : [WHATSAT] Found entry: AT Bolden 48161696.8608 qingwei.seas.ucla.edu +34.068930-118.445127 1400794645.39.
+INFO:root:[Powell] : [WHATSAT] API request created: https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=+34.068930,-118.445127&radius=20&sensor=false&key=AIzaSyDsr8DYXDNDY2y0nh2fM93DEYkkGUxYUEk.
+INFO:root:[Powell] : [API] Google API response: {
+    "status": "OK", 
+    "html_attributions": [], 
+    "results": [
+        {
+            "name": "Westwood Plaza", 
+            "reference": "CpQBiAAAACz6oOj3mWMDBdpWLyV098DexFaiv6QX5fKkZPevoIaYJDGuKwYkPHzGV7A9KWvoxvzMOpTxwE6faH9jZxoYXjY-B_uY2XTr2tIR5R3-YQUMEiOT10p8k1Fd_GRofBVsnRu0YqAUVecr1HJbapwyXEcuYGojIAleXCq1DJQ3cqOVu0hTxX-1mP-ADX4bPohMpRIQL7VNFRsToOtBnrgKUFthMhoUVZi-BveMJRrExJ14aJLe1J7ojfc", 
+            "geometry": {
+                "location": {
+                    "lat": 34.0689117, 
+                    "lng": -118.4449861
+                }
+            }, 
+            "place_id": "ChIJu_H-qIi8woAReK5_EvNMbD8", 
+            "vicinity": "Los Angeles", 
+            "scope": "GOOGLE", 
+            "id": "2f309b941cb2943dc56af3e42b9a3a1ccac412ed", 
+            "types": [
+                "route"
+            ], 
+            "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/geocode-71.png"
+        }, 
+        {
+            "rating": 4.5, 
+            "name": "University of California, Los Angeles", 
+            "reference": "CoQBeAAAALDYP4vkgcKz-NNunKXFXx3SAmbj94ZMp_f0vCl-wTh_YxFedmChtOIejrNoDagy_F456h48XTYzVzeKdGb3npqBOIx4PX_XSUh4-jJcgzQ5cfFhVtAFkc0uZbi5EJdnOcFo10r0X_dJQrK2evp3Np1uZIYahQ2g5vyBUmAFjKEzEhAE--Bg7FZH-PU4OsmXoxfyGhSX3SO50spA_yvRB-Kl8oBHW9FWVw", 
+            "geometry": {
+                "location": {
+                    "lat": 34.068921, 
+                    "lng": -118.4451811
+                }
+            }, 
+            "place_id": "ChIJZQ9c8IW8woARN0gTXFiTqSU", 
+            "vicinity": "Los Angeles", 
+            "photos": [
+                {
+                    "photo_reference": "CmRdAAAAfFDXp0PRPZhXFUaWr0PgxPY7hKMkqUAd-xqri6fQv1AQRuOZ_WKcvipfTz24WTmKtCP173ULGgFxGhbmnmc0yBrkCuQ27haDYGXnklIyZxSr2oiT3lwDw5BHfWnz3aBpEhC6UF_x9OJChca9T2scMl7JGhRSvL_FOShJYql2Th9USqnLuKpE8A", 
+                    "width": 1600, 
+                    "html_attributions": [
+                        "<a href=\"https://maps.google.com/maps/contrib/103897750204168709204\">Ufuk KILI\u00c7</a>"
+                    ], 
+                    "height": 1200
+                }
+            ], 
+            "scope": "GOOGLE", 
+            "id": "4d56f16ad3d8976d49143fa4fdfffbc0a7ce8e39", 
+            "types": [
+                "university", 
+                "point_of_interest", 
+                "establishment"
+            ], 
+            "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/school-71.png"
+        }, 
+        {
+            "name": "Westwood", 
+            "reference": "CoQBewAAAE01ypuUMKoidr3xtP26M1liAJKcDsPDoig_IPsX5L-t28fJ5jBzgv9EarAUpNn1Ccs9Emmb1QRx9Y7FVKhorBvVc3nHmJp4zbIekp2S4t_EHAEYBfpbUmCAD5w4BANHrd1kYh_pxSHIZzcHaQMUFeyHTSaBzvTCA-XcB8j9ZLpNEhACgTnASVFz3xeE2xMEBEWGGhQCm0mh-Y4-OAzC2oFGV_eaAvryHg", 
+            "geometry": {
+                "location": {
+                    "lat": 34.0635016, 
+                    "lng": -118.4455164
+                }, 
+                "viewport": {
+                    "northeast": {
+                        "lat": 34.0827807, 
+                        "lng": -118.4141518
+                    }, 
+                    "southwest": {
+                        "lat": 34.0470589, 
+                        "lng": -118.4665319
+                    }
+                }
+            }, 
+            "place_id": "ChIJecf92oa8woARVlNT9X_x42M", 
+            "vicinity": "Los Angeles", 
+            "scope": "GOOGLE", 
+            "id": "87ef87c6cb98059f72b40a917e6e9c8c80e5d8b3", 
+            "types": [
+                "neighborhood", 
+                "political"
+            ], 
+            "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/geocode-71.png"
+        }
+    ]
+}.
+INFO:root:[Powell] : [CONNECTION] Connection closed, total: 0.
+INFO:root:[Powell] : [CONNECTION] Connection established, total: 1.
+INFO:root:[Powell] : [REQUEST] Recieved: AT Hamilton 47961707.8996 qingweipeterlan.seas.ucla.edu +31.068930-118.445127 1400994645.39.
+INFO:root:[Powell] : [AT] New client: qingweipeterlan.seas.ucla.edu.
+INFO:root:[Powell] : [FLOOD] Sent location from Powell to Alford.
+INFO:root:[Powell] : [FLOOD] Sent location from Powell to Bolden.
+INFO:root:[Powell] : [CONNECTION] Connection closed, total: 0.
+INFO:root:[Powell] : SERVER Powell with PORT 12554 stopped.
